@@ -9,7 +9,6 @@ class Booking(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer,db.ForeignKey(add_prefix_for_prod('users.id'), ondelete='CASCADE'), nullable=False)
     service_id = db.Column(db.Integer,db.ForeignKey(add_prefix_for_prod('services.id'), ondelete='CASCADE'), nullable=False)
-    price = db.Column(db.String(500))
     instructions = db.Column(db.String(500))
 
     user = db.relationship('User', back_populates='bookings')
@@ -20,6 +19,5 @@ class Booking(db.Model):
             "id": self.id,
             "user_id": self.user_id,
             "service_id": self.service_id,
-            "price": self.price,
             'instructions': self.instructions
         }
