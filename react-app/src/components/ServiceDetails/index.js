@@ -8,12 +8,22 @@ function ServiceDetails(){
     const dispatch = useDispatch()
     const serviceDetails = useSelector(state => state.services.serviceDetails)
     const serviceDetailsData = Object.values(serviceDetails)
+    const [users, setUsers] = useState([]);
 
     useEffect(() => {
         dispatch(getServiceDetails(serviceId))
+        async function fetchData() {
+            const response = await fetch('/api/users/');
+            const responseData = await response.json();
+            setUsers(responseData.users);
+          }
+          fetchData();
     }, [dispatch])
 
 
+
+    const serviceOwnerArray = users.filter(user => user.id === serviceDetails.user_id)
+    const serviceOwner = serviceOwnerArray[0]
 
     if(!serviceDetailsData.length){
         return null
@@ -21,11 +31,16 @@ function ServiceDetails(){
 
     return (
         <div>
-        <h1>Service Details Page</h1>
+        <h2>Service Details Page</h2>
         <div>{serviceDetails.title}</div>
         <div>{serviceDetails.thumbnail}</div>
         <div>{serviceDetails.description}</div>
         <div>{serviceDetails.price}</div>
+        <h2>Service Provider Details</h2>
+        <div>{serviceOwner.profile_photo}</div>
+        <div>{serviceOwner.username}</div>
+        <div>{serviceOwner.bio}</div>
+
         </div>
     )
 }
