@@ -25,7 +25,9 @@ function ServiceDetails(){
     const serviceOwnerArray = users.filter(user => user.id === serviceDetails.user_id)
     const serviceOwner = serviceOwnerArray[0]
 
-    if(!serviceDetailsData.length){
+    console.log('owner', serviceOwner)
+
+    if(!serviceDetailsData.length || !serviceOwnerArray.length ){
         return null
     }
 
@@ -36,6 +38,7 @@ function ServiceDetails(){
         <div>{serviceDetails.thumbnail}</div>
         <div>{serviceDetails.description}</div>
         <div>{serviceDetails.price}</div>
+
         <h2>Service Provider Details</h2>
         <div>{serviceOwner.profile_photo}</div>
         <div>{serviceOwner.username}</div>
