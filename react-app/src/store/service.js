@@ -1,5 +1,11 @@
 const GET_ALL_SERVICES = 'service/GET_ALL_SERVICES'
 const GET_SERVICE_DETAILS = 'service/GET_SERVICE_DETAILS'
+const POST_SERVICE = 'service/POST_SERVICE'
+
+const postService = (data) => ({
+    type: POST_SERVICE,
+    data
+})
 
 const get_service_details = (data) => ({
     type: GET_SERVICE_DETAILS,
@@ -9,6 +15,22 @@ const get_all_services = (data) => ({
     type:GET_ALL_SERVICES,
     data
 })
+export const createService = (formInfo) => async (dispatch) => {
+    console.log('before fetch', formInfo)
+    const response = await fetch(`/api/service/`, {
+        method:'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formInfo)
+    })
+    console.log('after fetch')
+    if(response.ok){
+        const newService = await response.json()
+        dispatch(postService(newService))
+        return newService
+    } else{
+        return response
+    }
+}
 
 export const getServiceDetails = (id) => async (dispatch) => {
     const response = await fetch(`/api/service/${id}`)

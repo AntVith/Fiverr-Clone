@@ -2,6 +2,8 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import LogoutButton from './auth/LogoutButton';
+import OpenModalButton from './OpenModalButton'
+import UploadNewService from './PostServiceModal'
 
 const NavBar = () => {
   return (
@@ -26,6 +28,12 @@ const NavBar = () => {
           <NavLink to='/users' exact={true} activeClassName='active'>
             Users
           </NavLink>
+        </li>
+        <li>
+        <OpenModalButton
+            buttonText='Post Your Service'
+            modalComponent={<UploadNewService />}
+            />
         </li>
         <li>
           <LogoutButton />
