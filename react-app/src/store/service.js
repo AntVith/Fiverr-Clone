@@ -15,12 +15,12 @@ const get_all_services = (data) => ({
     type:GET_ALL_SERVICES,
     data
 })
-export const createService = (formInfo) => async (dispatch) => {
-    console.log('before fetch', formInfo)
+export const createService = (formData) => async (dispatch) => {
+    console.log('before fetch', formData)
     const response = await fetch(`/api/service/`, {
         method:'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formInfo)
+        body: JSON.stringify(formData)
     })
     console.log('after fetch')
     if(response.ok){

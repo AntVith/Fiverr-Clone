@@ -18,7 +18,7 @@ function ServiceDetails(){
             setUsers(responseData.users);
           }
           fetchData();
-    }, [dispatch])
+    }, [dispatch, serviceId])
 
 
 

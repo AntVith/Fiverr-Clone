@@ -22,15 +22,15 @@ function UploadNewService(){
         e.preventDefault()
         setErrors([])
 
-        const newService = {
+        const formData = {
             "user_id": sessionUser.id,
             title,
             description,
             "price": Number(price),
             thumbnail
         }
-        console.log('in handle submit', newService)
-        const createdService = await dispatch(createService(newService)).catch(
+        console.log('in handle submit', formData)
+        const createdService = await dispatch(createService(formData)).catch(
             async (res) => {
                 const data = await res.json()
                 if(data && data.errors) setErrors(data.errors)
@@ -38,9 +38,10 @@ function UploadNewService(){
         )
         if(createdService){
             (closeModal)
-            (history.push(`/service/${createdService.id}`))
-        }else{
-            console.log('error', createdService)
+            (setTimeout(() => {
+                console.log('waiting')
+              }, 1000))
+            (history.push(`/services/${createdService.id}`))
         }
     }
 

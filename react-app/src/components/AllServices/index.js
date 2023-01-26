@@ -7,10 +7,11 @@ function AllServices() {
     const dispatch = useDispatch()
     const servicesObj = useSelector(state => state.services.allServices)
     const services = Object.values(servicesObj)
+    const totalServices = services.length
 
     useEffect(() => {
        dispatch(getAllServices())
-    }, [dispatch])
+    }, [dispatch, totalServices])
 
 
 if(!services.length){

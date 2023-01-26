@@ -27,13 +27,11 @@ def get_service_by_id(id):
 def post_service():
     form = ServiceForm()
     form['csrf_token'].data = request.cookies['csrf_token']
-    print('form----------', form)
-    print('form----------', form.data)
+
 
     if form.validate_on_submit():
         new_service = Service()
         form.populate_obj(new_service)
-        print('new service------', new_service)
 
         db.session.add(new_service)
         db.session.commit()
