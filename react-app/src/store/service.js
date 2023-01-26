@@ -77,6 +77,17 @@ const serviceReducer = (state= initialState, action) => {
             newState.serviceDetails = serviceData
             return newState
         }
+        case POST_SERVICE:{
+            console.log('action data', action.data)
+            const newState = {...state}
+            const newallServices = {...state.allServices}
+            const newServiceDetails = action.data
+            newallServices[action.data.id] = action.data
+            newState.allServices = newallServices
+            newState.serviceDetails = newServiceDetails
+            console.log('new state', newState)
+            return newState
+        }
         default:
           return state;
       }

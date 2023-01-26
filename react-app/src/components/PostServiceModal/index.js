@@ -38,9 +38,9 @@ function UploadNewService(){
         )
         if(createdService){
             (closeModal)
-            (setTimeout(() => {
-                console.log('waiting')
-              }, 1000))
+            // (setTimeout(() => {
+            //     console.log('waiting')
+            //   }, 1000))
             (history.push(`/services/${createdService.id}`))
         }
     }
