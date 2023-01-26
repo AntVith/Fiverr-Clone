@@ -17,6 +17,7 @@ function UploadNewService(){
     const [price, setPrice] = useState(1)
     const [thumbnail, setThumbnail] = useState('')
     const [errors, setErrors] = useState([]);
+    const [showSuccess, setSuccess] = useState(false);
 
     const handleSubmit = async (e) => {
         e.preventDefault()
@@ -30,12 +31,13 @@ function UploadNewService(){
             thumbnail
         }
         console.log('in handle submit', formData)
-        const createdService = await dispatch(createService(formData)).catch(
-            async (res) => {
-                const data = await res.json()
-                if(data && data.errors) setErrors(data.errors)
-            }
-        )
+        const createdService = await dispatch(createService(formData))
+
+        setSuccess(true);
+        setTimeout(() => window.location.reload(true), 1000);
+
+
+
         if(createdService){
             (closeModal)
             // (setTimeout(() => {
@@ -90,6 +92,12 @@ function UploadNewService(){
                 <button className='song-submit-button' type="submit"
                 // disabled={isLoading}
                 >Upload</button>
+                {showSuccess && (
+                <div>
+                    <p>Post Successful!</p>
+                </div>
+
+      )}
             </form>
         </div>
     )
