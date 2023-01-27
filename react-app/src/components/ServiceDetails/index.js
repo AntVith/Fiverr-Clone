@@ -35,12 +35,12 @@ function ServiceDetails(){
         <div>
         <h2>Service Details Page</h2>
         <div>{serviceDetails.title}</div>
-        <div>{serviceDetails.thumbnail}</div>
+        <img src={serviceDetails.thumbnail} />
         <div>{serviceDetails.description}</div>
         <div>{serviceDetails.price}</div>
 
         <h2>Service Provider Details</h2>
-        <div>{serviceOwner.profile_photo}</div>
+        {/* <div>{serviceOwner.profile_photo}</div> */}
         <div>{serviceOwner.username}</div>
         <div>{serviceOwner.bio}</div>
 

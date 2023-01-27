@@ -1,0 +1,19 @@
+#service-container{
+    margin: 0 5% 0 5%;
+}
+#all-services{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width:100%
+}
+#service-details{
+    display: flex;
+    flex-direction: column;
+    width: 250px
+}
+#service-image-homepage{
+    height: 180px;
+    object-fit: cover;
+    /* width:100% */
+}
