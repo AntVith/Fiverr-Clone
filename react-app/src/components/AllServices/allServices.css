@@ -5,15 +5,19 @@
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    width:100%
+    width:100%;
+    /* justify-content: space-between; */
 }
+
 #service-details{
     display: flex;
     flex-direction: column;
-    width: 250px
+    margin-left: 0;
+    margin-right: 1%;
+    width:90%
 }
 #service-image-homepage{
-    height: 180px;
+    height: 150px;
     object-fit: cover;
     /* width:100% */
 }
