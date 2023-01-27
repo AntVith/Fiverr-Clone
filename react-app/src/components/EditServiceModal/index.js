@@ -14,7 +14,7 @@ function EditService(serviceId){
 
     const [title, setTitle] = useState('')
     const [description, setDescription] = useState('')
-    const [price, setPrice] = useState(1)
+    const [price, setPrice] = useState()
     const [thumbnail, setThumbnail] = useState('')
     const [errors, setErrors] = useState([]);
     const [showSuccess, setSuccess] = useState(false);
@@ -77,7 +77,8 @@ function EditService(serviceId){
                 value={description}
                 />
                 <input
-                type='text'
+                type='number'
+                pattern="[0-9]*"
                 required
                 onChange={(e) => setPrice(e.target.value)}
                 placeholder='$1'

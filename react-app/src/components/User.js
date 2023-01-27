@@ -65,7 +65,7 @@ function User() {
         <div>
         <NavLink
         to={`/services/${service.id}`}>
-          {service.thumbnail}
+          <img src={service.thumbnail}/>
           {service.title}
           {service.description}
           {service.price}

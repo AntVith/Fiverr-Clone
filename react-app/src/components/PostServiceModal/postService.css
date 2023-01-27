@@ -1,0 +1,45 @@
+#UploadServiceContainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    align-self: center;
+}
+#upload-service-form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    align-self: center;
+    width:70%;
+    font: 400 16px/24px "Macan","Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+#post-title{
+   color: darkslategray;
+   margin-top: 10%;
+}
+#title-post, #description-post, #price-post, #thumbnail-post{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 2%;
+    width:100%
+}
+.post-labels{
+    font-size: 17px;
+}
+.Post-Service-Inputs{
+    height:30px;
+    width:100%
+}
+#submit-post{
+    margin-top: 3%;
+    width:102%;
+    height:40px;
+    margin-left: 2.3%;
+    background-color: rgb(39, 214, 103);
+    color:white;
+    font-weight: bold;
+    font-size: 18px;
+    border: none;
+    border-radius: 3%;
+}
