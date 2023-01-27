@@ -40,3 +40,29 @@ def post_service():
         return {
             "errors": form.errors
         }, 400
+
+#edit a service
+@service_routes.route('/<int:service_id>/edit', methods=['PUT'])
+def edit_service(service_id):
+    form = ServiceForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+
+    service_to_edit = Service.query.get(service_id)
+
+    if form.validate_on_submit():
+        form.populate_obj(service_to_edit)
+
+        db.session.add(service_to_edit)
+        db.session.commit()
+        return service_to_edit.to_dict(), 200
+
+#delete a service
+@service_routes.route('/<int:service_id>/delete', methods=['DELETE'])
+def delete_service(service_id):
+
+    service = Service.query.get(service_id)
+
+    db.session.delete(service)
+    db.session.commit()
+
+    return {"message": 'successfully deleted'}, 200
