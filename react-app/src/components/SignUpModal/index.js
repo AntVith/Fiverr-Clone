@@ -6,8 +6,11 @@ import { useModal } from "../../context/Modal";
 
 function SignUp(){
     const [errors, setErrors] = useState([]);
+    const [first_name, setFirstName] = useState('')
+    const [last_name, setLastName] = useState('')
     const [username, setUsername] = useState('');
     const [email, setEmail] = useState('');
+    const [bio, setBio] = useState('')
     const [password, setPassword] = useState('');
     const [repeatPassword, setRepeatPassword] = useState('');
     const user = useSelector(state => state.session.user);
@@ -17,15 +20,23 @@ function SignUp(){
     const onSignUp = async (e) => {
       e.preventDefault();
       if (password === repeatPassword) {
-        const data = await dispatch(signUp(username, email, password))
+        const data = await dispatch(signUp( first_name, last_name, username, email, bio, password))
         .then(() => closeModal)
 
         if (data) {
-          setErrors(data)
+            setErrors(data)
         }
 
+      } else{
+         return setErrors['Passwords dont match']
       }
     };
+    const updateFirstName = (e) => {
+        setFirstName(e.target.value)
+    }
+    const updateLastName = (e) => {
+        setLastName(e.target.value)
+    }
 
     const updateUsername = (e) => {
       setUsername(e.target.value);
@@ -34,6 +45,9 @@ function SignUp(){
     const updateEmail = (e) => {
       setEmail(e.target.value);
     };
+    const updateBiography = (e) => {
+        setBio(e.target.value)
+    }
 
     const updatePassword = (e) => {
       setPassword(e.target.value);
@@ -44,6 +58,7 @@ function SignUp(){
     };
 
     if (user) {
+
       return <Redirect to='/' />;
     }
 
@@ -55,7 +70,25 @@ function SignUp(){
           ))}
         </div>
         <div>
-          <label>User Name</label>
+        <div>
+          <label>First Name</label>
+          <input
+            type='text'
+            name='FirstName'
+            onChange={updateFirstName}
+            value={first_name}
+          ></input>
+        </div>
+          <label>Last Name</label>
+          <input
+            type='text'
+            name='LastName'
+            onChange={updateLastName}
+            value={last_name}
+          ></input>
+        </div>
+        <div>
+          <label>Username</label>
           <input
             type='text'
             name='username'
@@ -70,6 +103,15 @@ function SignUp(){
             name='email'
             onChange={updateEmail}
             value={email}
+          ></input>
+        </div>
+        <div>
+          <label>Biography</label>
+          <input
+            type='text'
+            name='biography'
+            onChange={updateBiography}
+            value={bio}
           ></input>
         </div>
         <div>
