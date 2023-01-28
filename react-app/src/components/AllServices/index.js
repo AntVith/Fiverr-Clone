@@ -33,24 +33,41 @@ function AllServices() {
             const usernameFound = usersFound[0].username
             return usernameFound
           }
+        function profilePhotoFinder(id) {
+            const usersFound = users.filter(user => user.id === id)
+            const photoFound = usersFound[0].profile_photo
+            return photoFound
+          }
+
+
 
     return (
         <div id='service-container'>
             <div id='all-services'>
             {services.map(service => (
-                <ul>
+
                 <NavLink
-                to={`/services/${service.id}`}>
+                to={`/services/${service.id}`}
+                style={{ textDecoration: 'none' }}
+                >
                     <div id='service-details'>
                         <img src={service.thumbnail} id='service-image-homepage' />
-                        <div>{userNameFinder(service.user_id)}</div>
-                        <div>{service.title}</div>
-                        <div>{service.description}</div>
-                        <div>${service.price}</div>
+                        <div id='homepage-service-details'>
+                            <div id='profile-line-card'>
+                                <img src={profilePhotoFinder(service.user_id)} id='profile-photo-homepage'/>
+                                <div id='homepage-username'>{userNameFinder(service.user_id)}</div>
+                            </div>
+                            <div id='homepage-title'>{service.title}</div>
+                            {/* <div id='homepage-description'>{service.description}</div> */}
+                            <div id='price-line'>
+                            <div id='price-label'>Starting At</div>
+                            <div id='homepage-price'>  ${service.price}</div>
+                            </div>
+                        </div>
 
                     </div>
                 </NavLink>
-                </ul>
+
             ))}
             </div>
         </div>
