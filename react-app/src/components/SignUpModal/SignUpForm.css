@@ -1,11 +1,11 @@
-#UploadServiceContainer{
+#sign-up-form-container{
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     align-self: center;
 }
-#upload-service-form{
+#sign-up-form{
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -14,25 +14,31 @@
     width:70%;
     font: 400 16px/24px "Macan","Helvetica Neue",Helvetica,Arial,sans-serif;
 }
-#post-title{
+#sign-up-title{
     color: #404145;
     margin-top: 10%;
+    font-size: 25px;
+    margin-bottom: 5%;
+    /* font-weight: bold; */
+    font-family: macan,helvetica neue,Helvetica,Arial,sans-serif;
     font-weight: 500;
+
 }
-#title-post, #description-post, #price-post, #thumbnail-post{
+#sign-up-Fname, #sign-up-Lname, #sign-up-Uname, #sign-up-Email, #sign-up-Bio, #sign-up-Pass{
     display: flex;
     flex-direction: column;
     margin-bottom: 2%;
     width:100%
 }
-.post-labels{
+.sign-up-labels{
     font-size: 17px;
+    color: #404145
 }
-.Post-Service-Inputs{
+.sign-up-Inputs{
     height:30px;
     width:100%
 }
-#submit-post{
+#sign-up-submit{
     margin-top: 3%;
     width:102%;
     height:40px;

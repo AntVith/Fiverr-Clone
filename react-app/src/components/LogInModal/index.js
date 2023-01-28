@@ -18,10 +18,11 @@ const [errors, setErrors] = useState([]);
     e.preventDefault();
 
     const data = await dispatch(login(email, password))
-    .then(() =>
-    closeModal)
+   console.log('data',data)
     if (data) {
       setErrors(data);
+    } else{
+        closeModal()
     }
 
 
@@ -40,12 +41,15 @@ const [errors, setErrors] = useState([]);
   }
 
   return (
+    <div id='sign-up-form-container'>
     <form onSubmit={onLogin}>
+        <h2>Sign In to Striverr</h2>
       <div>
         {errors.map((error, ind) => (
           <div key={ind}>{error}</div>
         ))}
       </div>
+
       <div>
         <label htmlFor='email'>Email</label>
         <input
@@ -68,6 +72,7 @@ const [errors, setErrors] = useState([]);
         <button type='submit'>Login</button>
       </div>
     </form>
+    </div>
   );
 };
 

@@ -15,8 +15,9 @@
     font: 400 16px/24px "Macan","Helvetica Neue",Helvetica,Arial,sans-serif;
 }
 #post-title{
-   color: darkslategray;
-   margin-top: 10%;
+    color: #404145;
+    margin-top: 10%;
+    font-weight: 500;
 }
 #title-post, #description-post, #price-post, #thumbnail-post{
     display: flex;

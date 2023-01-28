@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
-import { Redirect } from 'react-router-dom';
+import { Redirect, useHistory } from 'react-router-dom';
 import { signUp } from '../../store/session';
 import { useModal } from "../../context/Modal";
+import './SignUpForm.css'
 
 function SignUp(){
     const [errors, setErrors] = useState([]);
@@ -12,24 +13,29 @@ function SignUp(){
     const [email, setEmail] = useState('');
     const [bio, setBio] = useState('')
     const [password, setPassword] = useState('');
-    const [repeatPassword, setRepeatPassword] = useState('');
+    // const [repeatPassword, setRepeatPassword] = useState('');
     const user = useSelector(state => state.session.user);
     const dispatch = useDispatch();
     const {closeModal} = useModal();
+    const history = useHistory()
 
     const onSignUp = async (e) => {
       e.preventDefault();
-      if (password === repeatPassword) {
+        setErrors([])
         const data = await dispatch(signUp( first_name, last_name, username, email, bio, password))
-        .then(() => closeModal)
+        // console.log('data', data)
 
-        if (data) {
-            setErrors(data)
+        if (data && data.length > 0) {
+            let errorMessages = []
+             data.forEach(error => {
+                let message = error.split(':')
+                errorMessages.push(message[1])
+                })
+            setErrors(errorMessages)
+        } else{
+             return closeModal()
         }
 
-      } else{
-         return setErrors['Passwords dont match']
-      }
     };
     const updateFirstName = (e) => {
         setFirstName(e.target.value)
@@ -53,88 +59,92 @@ function SignUp(){
       setPassword(e.target.value);
     };
 
-    const updateRepeatPassword = (e) => {
-      setRepeatPassword(e.target.value);
-    };
-
     if (user) {
-
       return <Redirect to='/' />;
     }
 
     return (
-      <form onSubmit={onSignUp}>
+    <div id='sign-up-form-container'>
+      <form  id='sign-up-form'onSubmit={onSignUp}>
+        <h4 id='sign-up-title'>Join Striverr</h4>
         <div>
           {errors.map((error, ind) => (
             <div key={ind}>{error}</div>
           ))}
         </div>
-        <div>
-        <div>
-          <label>First Name</label>
+        <div id='sign-up-Fname'>
+          <label className='sign-up-labels'>First Name</label>
           <input
             type='text'
             name='FirstName'
+            required
+            className='sign-up-Inputs'
             onChange={updateFirstName}
             value={first_name}
           ></input>
         </div>
-          <label>Last Name</label>
+        <div id='sign-up-Lname'>
+          <label className='sign-up-labels'>Last Name</label>
           <input
             type='text'
             name='LastName'
+            required
+            className='sign-up-Inputs'
             onChange={updateLastName}
             value={last_name}
           ></input>
-        </div>
-        <div>
-          <label>Username</label>
+          </div>
+
+        <div id='sign-up-Uname'>
+          <label className='sign-up-labels'>Username</label>
           <input
             type='text'
             name='username'
+            required
+            className='sign-up-Inputs'
             onChange={updateUsername}
             value={username}
           ></input>
         </div>
-        <div>
-          <label>Email</label>
+        <div id='sign-up-Email'>
+          <label className='sign-up-labels'>Email</label>
           <input
             type='text'
             name='email'
+            required
+            className='sign-up-Inputs'
             onChange={updateEmail}
             value={email}
           ></input>
         </div>
-        <div>
-          <label>Biography</label>
+        <div id='sign-up-Bio'>
+          <label className='sign-up-labels'>Biography</label>
           <input
             type='text'
             name='biography'
+            required
+            className='sign-up-Inputs'
             onChange={updateBiography}
             value={bio}
           ></input>
         </div>
-        <div>
-          <label>Password</label>
+        <div id='sign-up-Pass'>
+          <label className='sign-up-labels'>Password</label>
           <input
             type='password'
             name='password'
+            required
+            className='sign-up-Inputs'
             onChange={updatePassword}
             value={password}
           ></input>
         </div>
-        <div>
-          <label>Repeat Password</label>
-          <input
-            type='password'
-            name='repeat_password'
-            onChange={updateRepeatPassword}
-            value={repeatPassword}
-            required={true}
-          ></input>
-        </div>
-        <button type='submit'>Sign Up</button>
+
+        <button type='submit'
+        id='sign-up-submit'
+        >Sign Up</button>
       </form>
+      </div>
     );
 }
 export default SignUp
