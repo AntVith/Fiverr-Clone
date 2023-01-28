@@ -1,6 +1,20 @@
-#service-container{
+#whole-home-page{
     margin: 0 5% 0 5%;
 }
+#imgSlider{
+    width: 300px;
+    height: 250px;
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    /* padding-left: 1%; */
+    margin-bottom: 5%;
+    /* object-fit: cover; */
+    border: 1px solid #e4e5e7
+}
+/* #service-container{
+    margin: 0 5% 0 5%;
+} */
 #all-services{
     display: flex;
     flex-direction: row;
