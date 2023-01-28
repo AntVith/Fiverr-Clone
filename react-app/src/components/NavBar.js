@@ -17,26 +17,39 @@ const NavBar = () => {
   if(sessionUser){
     sessionLinks = (
     <>
-    <nav>
+    <nav className='navbar'>
       <div id='navbar-contents'>
-        <div>
-          <NavLink to='/' exact={true} activeClassName='active'>
-            Home
+        <div id='whole-title' >
+          <NavLink
+           to='/' exact={true} activeClassName='active'
+           style={{ textDecoration: 'none' }}
+           id='site-title'>
+            Striverr
+          <div id='title-period'>.</div>
           </NavLink>
+
         </div>
-        <div>
-          <NavLink to='/users' exact={true} activeClassName='active'>
-            Users
-          </NavLink>
-        </div>
-        <div>
+        <div className='right-side-contents'>
+
+        <div className='navbar-buttons'>
         <OpenModalButton
-            buttonText='Post Your Service'
+            buttonText='Striverr Business'
+
             modalComponent={<UploadNewService />}
             />
         </div>
+
+        <div className='navbar-buttons' >
+          <LogoutButton id='logout-button'/>
+        </div>
         <div>
-          <LogoutButton />
+          <NavLink
+          style={{ textDecoration: 'none' }}
+          to={`/users/${sessionUser.id}`} exact={true} activeClassName='active'
+          >
+            <img  id='user-page-image' src='https://www.shutterstock.com/image-vector/man-icon-vector-260nw-1040084344.jpg'></img>
+          </NavLink>
+        </div>
         </div>
       </div>
     </nav>
@@ -45,33 +58,40 @@ const NavBar = () => {
   }else{
     sessionLinks = (
       <>
-    <nav>
+    <nav className='navbar'>
       <div id='navbar-contents'>
-        <div>
-          <NavLink to='/' exact={true} activeClassName='active'>
-            Home
+      <div id='whole-title' >
+          <NavLink
+           to='/' exact={true} activeClassName='active'
+           style={{ textDecoration: 'none' }}
+           id='site-title'>
+            Striverr
+          <div id='title-period'>.</div>
           </NavLink>
+
         </div>
-        <div>
+        <div className='right-side-contents-logged-out'>
+        <div >
         <OpenModalButton
-            buttonText='Log In'
+            buttonText='Sign In'
             modalComponent={<LogIn />}
             />
         </div>
         <div>
         <OpenModalButton
-            buttonText='Sign Up'
+            buttonText='Join'
             modalComponent={<SignUp />}
             />
         </div>
-        <div>
+        </div>
+        {/* <div>
           <NavLink to='/users' exact={true} activeClassName='active'>
             Users
           </NavLink>
-        </div>
-        <div>
+        </div> */}
+        {/* <div>
           <LogoutButton />
-        </div>
+        </div> */}
       </div>
     </nav>
     </>
