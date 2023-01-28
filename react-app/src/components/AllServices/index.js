@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import {getAllServices} from '../../store/service'
+// import { TransitionGroup, CSSTransition } from 'react-transition-group'
 import './allServices.css'
 function AllServices() {
     const dispatch = useDispatch()
@@ -32,16 +33,18 @@ function AllServices() {
             const usersFound = users.filter(user => user.id === id)
             const usernameFound = usersFound[0].username
             return usernameFound
-          }
+        }
         function profilePhotoFinder(id) {
             const usersFound = users.filter(user => user.id === id)
             const photoFound = usersFound[0].profile_photo
             return photoFound
-          }
+        }
 
 
 
     return (
+        <div>
+        <div id='banner-section'>hello</div>
         <div id='service-container'>
             <div id='all-services'>
             {services.map(service => (
@@ -70,6 +73,7 @@ function AllServices() {
 
             ))}
             </div>
+        </div>
         </div>
     )
 }
