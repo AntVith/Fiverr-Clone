@@ -5,6 +5,7 @@ import { useModal } from "../../context/Modal";
 import { useSelector } from "react-redux";
 import { Redirect } from 'react-router-dom';
 import { login } from '../../store/session';
+import './LogInModal.css'
 
 function LogIn(){
 const [errors, setErrors] = useState([]);
@@ -41,36 +42,40 @@ const [errors, setErrors] = useState([]);
   }
 
   return (
-    <div id='sign-up-form-container'>
-    <form onSubmit={onLogin}>
-        <h2>Sign In to Striverr</h2>
+    <div id='login-form-container'>
+    <form id='login-form' onSubmit={onLogin}>
+        <h4 id='login-title'>Sign In to Striverr</h4>
       <div>
         {errors.map((error, ind) => (
           <div key={ind}>{error}</div>
         ))}
       </div>
 
-      <div>
-        <label htmlFor='email'>Email</label>
+      <div id='login-email'>
+        <label  id='login-label' htmlFor='email'>Email</label>
         <input
           name='email'
           type='text'
           placeholder='Email'
           value={email}
+          className='login-inputs'
           onChange={updateEmail}
         />
       </div>
-      <div>
-        <label htmlFor='password'>Password</label>
+      <div id='login-password'>
+        <label  id='login-label'htmlFor='password'>Password</label>
         <input
           name='password'
           type='password'
           placeholder='Password'
           value={password}
+          className='login-inputs'
           onChange={updatePassword}
         />
-        <button type='submit'>Login</button>
       </div>
+      <button
+      id='login-submit'
+      type='submit'>Login</button>
     </form>
     </div>
   );

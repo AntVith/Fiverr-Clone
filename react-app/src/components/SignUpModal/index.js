@@ -78,6 +78,7 @@ function SignUp(){
             type='text'
             name='FirstName'
             required
+            placeholder='First Name'
             className='sign-up-Inputs'
             onChange={updateFirstName}
             value={first_name}
@@ -88,6 +89,7 @@ function SignUp(){
           <input
             type='text'
             name='LastName'
+            placeholder='Last Name'
             required
             className='sign-up-Inputs'
             onChange={updateLastName}
@@ -101,6 +103,7 @@ function SignUp(){
             type='text'
             name='username'
             required
+            placeholder='Username'
             className='sign-up-Inputs'
             onChange={updateUsername}
             value={username}
@@ -112,6 +115,7 @@ function SignUp(){
             type='text'
             name='email'
             required
+            placeholder='Email'
             className='sign-up-Inputs'
             onChange={updateEmail}
             value={email}
@@ -123,6 +127,7 @@ function SignUp(){
             type='text'
             name='biography'
             required
+            placeholder='Biography'
             className='sign-up-Inputs'
             onChange={updateBiography}
             value={bio}
@@ -134,6 +139,7 @@ function SignUp(){
             type='password'
             name='password'
             required
+            placeholder='Password'
             className='sign-up-Inputs'
             onChange={updatePassword}
             value={password}

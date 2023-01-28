@@ -1,0 +1,51 @@
+#login-form-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    align-self: center;
+}
+#login-form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    align-self: center;
+    width:70%;
+    font: 400 16px/24px "Macan","Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+#login-title{
+    color: #404145;
+    margin-top: 15%;
+    font-size: 25px;
+    margin-bottom: 20%;
+    /* font-weight: bold; */
+    font-family: macan,helvetica neue,Helvetica,Arial,sans-serif;
+    font-weight: 500;
+}
+#login-email, #login-password{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 2%;
+    width:100%
+}
+#login-label{
+    font-size: 17px;
+    color: #404145
+}
+.login-inputs{
+    height:30px;
+    width:100%
+}
+#login-submit{
+    margin-top: 3%;
+    width:102%;
+    height:40px;
+    margin-left: 2.3%;
+    background-color: rgb(39, 214, 103);
+    color:white;
+    font-weight: bold;
+    font-size: 18px;
+    border: none;
+    border-radius: 3%;
+}
