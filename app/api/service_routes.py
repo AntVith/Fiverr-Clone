@@ -1,7 +1,8 @@
 from flask import Blueprint, jsonify , request
 from flask_login import login_required
-from app.models import User, Service, db
+from app.models import User, Service, db, Booking
 from ..forms.service_form import ServiceForm
+from ..forms.booking_form import BookingForm
 
 service_routes = Blueprint('service', __name__)
 
@@ -66,3 +67,21 @@ def delete_service(service_id):
     db.session.commit()
 
     return {"message": 'successfully deleted'}, 200
+
+#post a booking of a service
+@service_routes.route('/<int:service_id>/book', methods=['POST'])
+def book_service(service_id):
+    form = BookingForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+
+    if form.validate_on_submit():
+        new_booking = Booking()
+        form.populate_obj(new_booking)
+
+        db.session.add(new_booking)
+        db.session.commit()
+        return new_booking.to_dict(), 201
+    if form.errors:
+        return {
+            "errors": form.errors
+        }, 400
