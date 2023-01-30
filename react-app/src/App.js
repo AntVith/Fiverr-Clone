@@ -10,6 +10,7 @@ import User from './components/User';
 import { authenticate } from './store/session';
 import AllServices from './components/AllServices/'
 import SeviceDetails from './components/ServiceDetails/'
+import UserOrders from './components/Orders';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -36,6 +37,9 @@ function App() {
         <ProtectedRoute path='/users/:userId' exact={true} >
           <User />
         </ProtectedRoute>
+        <Route path='/orders' exact={true}>
+          <UserOrders />
+        </Route>
         <Route path='/login' exact={true}>
           <LoginForm />
         </Route>

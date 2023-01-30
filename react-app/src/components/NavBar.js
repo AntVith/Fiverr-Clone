@@ -38,6 +38,12 @@ const NavBar = () => {
             modalComponent={<UploadNewService />}
             />
         </div>
+        <NavLink
+          style={{ textDecoration: 'none' }}
+          to={`/orders`} exact={true} activeClassName='active'
+          >
+            Orders
+          </NavLink>
 
         <div className='navbar-buttons' >
           <LogoutButton id='logout-button'/>
