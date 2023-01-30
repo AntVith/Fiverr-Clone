@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, useParams } from 'react-router-dom';
 import {getServiceDetails} from '../../store/service'
 import { postABooking } from '../../store/booking';
+import {editAUserBalance} from '../../store/session'
 import './ServiceDetails.css'
 function ServiceDetails(){
     const {serviceId} = useParams()
@@ -11,18 +12,27 @@ function ServiceDetails(){
     const serviceDetailsData = Object.values(serviceDetails)
     const [users, setUsers] = useState([]);
     const [instructions, setInstructions] = useState('')
+    const [bookings, setBookings] = useState([])
     const sessionUser = useSelector(state => state.session.user);
     const history = useHistory()
 
     useEffect(() => {
         dispatch(getServiceDetails(serviceId))
-        async function fetchData() {
+            async function fetchData() {
             const response = await fetch('/api/users/');
             const responseData = await response.json();
             setUsers(responseData.users);
           }
           fetchData();
+          async function fetchBookings() {
+            const response = await fetch(`/api/booking/service/${serviceId}`);
+            const responseData = await response.json();
+            setBookings(responseData.bookings);
+          }
+          fetchBookings();
     }, [dispatch, serviceId])
+
+
 
     const handleSubmit = async (e) =>{
         e.preventDefault()
@@ -35,6 +45,12 @@ function ServiceDetails(){
         const bookedService = await dispatch(postABooking(formData, serviceDetails.id))
         console.log('after dispatch')
         if(bookedService){
+            const balance = sessionUser.balance - serviceDetails.price
+            const userId = sessionUser.id
+            const newBalance = {
+                balance
+            }
+            const adjustedBalance = await dispatch(editAUserBalance(newBalance, userId))
             history.push(`/orders`)
         }
     }
@@ -49,24 +65,48 @@ function ServiceDetails(){
         const photoFound = usersFound[0].profile_photo
         return photoFound
     }
-
+    console.log('bookings', bookings)
     const serviceOwnerArray = users.filter(user => user.id === serviceDetails.user_id)
     const serviceOwner = serviceOwnerArray[0]
 
     // console.log('owner', serviceOwner)
 
 
-    if(!serviceDetailsData.length || !serviceOwnerArray.length ){
+    if(!serviceDetailsData.length || !serviceOwnerArray.length || !bookings.length ){
         return null
     }
-    function enoughMoney(){
-        console.log('in money',(sessionUser.balance - serviceDetails.price) )
-        if((sessionUser.balance - serviceDetails.price) >0){
-            return true
+    const alreadyBookedByUser = bookings.filter(booking => booking.user_id === sessionUser?.id)
+    console.log('booked', alreadyBookedByUser)
+
+    function validationChecker(){
+
+        if(!sessionUser){
+            return <div id='not-enough-money'> Please log in or sign up to book!</div>
+        }
+        else if(serviceDetails.user_id === sessionUser.id){
+            return <div id='not-enough-money'> Can't book your own service! </div>
+        }
+        else if(alreadyBookedByUser.length){
+            return <div id='not-enough-money'> Already booked this service! </div>
+        }
+        else if((sessionUser.balance - serviceDetails.price) <0){
+            return <div id='not-enough-money'> Please add funds to your balance to book! </div>
         } else{
-            return false
+            return <button
+            className='booking-Inputs'
+            type="submit"
+            id='submit-booking'
+               >Order</button>
         }
     }
+    // function enoughMoney(){
+    //     console.log('in money',(sessionUser.balance - serviceDetails.price) )
+    //     if((sessionUser.balance - serviceDetails.price) >0){
+    //         return true
+    //     } else{
+    //         return false
+    //     }
+    // }
 
     return (
         <div id='whole-details-page'>
@@ -129,14 +169,15 @@ function ServiceDetails(){
                      name='instructions'
                      value={instructions}
                      />
-                     {enoughMoney() ?
+                     {/* {enoughMoney() ?
                      <button
                      className='booking-Inputs'
                      type="submit"
                      id='submit-booking'
                         >Order</button> :
                         <div id='not-enough-money'> Please add funds to your balance to book! </div>
-                        }
+                        } */}
+                        {validationChecker()}
                     </form>
 
                 </div>

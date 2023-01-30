@@ -1,6 +1,12 @@
 // constants
 const SET_USER = 'session/SET_USER';
 const REMOVE_USER = 'session/REMOVE_USER';
+const EDIT_USER_BALANCE = 'session/EDIT_USER_BALANCE'
+
+const editUserBalance = (user) => ({
+  type:EDIT_USER_BALANCE,
+  user
+})
 
 const setUser = (user) => ({
   type: SET_USER,
@@ -12,6 +18,21 @@ const removeUser = () => ({
 })
 
 const initialState = { user: null };
+
+export const editAUserBalance = (newBalance, userId) => async (dispatch) =>{
+  const response = await fetch(`/api/users/${userId}/edit`, {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(newBalance)
+  })
+  if (response.ok){
+    const user = await response.json()
+    dispatch(editUserBalance(user))
+    return user
+  }
+}
 
 export const authenticate = () => async (dispatch) => {
   const response = await fetch('/api/auth/', {
@@ -108,6 +129,8 @@ export default function reducer(state = initialState, action) {
       return { user: action.payload }
     case REMOVE_USER:
       return { user: null }
+    case EDIT_USER_BALANCE :
+      return {user: action.user}
     default:
       return state;
   }
