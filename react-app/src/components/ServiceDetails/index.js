@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
+import { useHistory, useParams } from 'react-router-dom';
 import {getServiceDetails} from '../../store/service'
+import { postABooking } from '../../store/booking';
 import './ServiceDetails.css'
 function ServiceDetails(){
     const {serviceId} = useParams()
@@ -10,6 +11,8 @@ function ServiceDetails(){
     const serviceDetailsData = Object.values(serviceDetails)
     const [users, setUsers] = useState([]);
     const [instructions, setInstructions] = useState('')
+    const sessionUser = useSelector(state => state.session.user);
+    const history = useHistory()
 
     useEffect(() => {
         dispatch(getServiceDetails(serviceId))
@@ -20,6 +23,21 @@ function ServiceDetails(){
           }
           fetchData();
     }, [dispatch, serviceId])
+
+    const handleSubmit = async (e) =>{
+        e.preventDefault()
+        console.log('in handle')
+        const formData = {
+            "user_id": sessionUser.id,
+            "service_id": serviceDetails.id,
+            instructions
+        }
+        const bookedService = await dispatch(postABooking(formData, serviceDetails.id))
+        console.log('after dispatch')
+        if(bookedService){
+            history.push(`/orders`)
+        }
+    }
 
     function userNameFinder(id) {
         const usersFound = users.filter(user => user.id === id)
@@ -42,8 +60,8 @@ function ServiceDetails(){
         return null
     }
     function enoughMoney(){
-        console.log('in money',(serviceOwner.balance - serviceDetails.price) )
-        if((serviceOwner.balance - serviceDetails.price) >0){
+        console.log('in money',(sessionUser.balance - serviceDetails.price) )
+        if((sessionUser.balance - serviceDetails.price) >0){
             return true
         } else{
             return false
@@ -85,21 +103,25 @@ function ServiceDetails(){
             <div id='bookings-side'>
                 <div id='booking-post'>
                      <label id='booking-label'>Book This Service</label>
+                     { sessionUser &&
                      <div id='user-balance'>
                         <div id='user-balance-label'>Your Balance :</div>
-                         <div id='user-balance-amount'> ${serviceOwner.balance}</div>
-                     </div>
+                         <div id='user-balance-amount'> ${sessionUser.balance}</div>
+                     </div>}
                      <div id='price-booking'>
                         <div>Price : </div>
                         <div id='booking-price'>${serviceDetails.price}</div>
                      </div>
+                     {sessionUser &&
                      <div id='price-calculation'>
                      <div>Post Purchase Balance : </div>
-                     <div id='total-after-cost'> ${serviceOwner.balance - serviceDetails.price}</div>
-                     </div>
+                     <div id='total-after-cost'> ${sessionUser.balance - serviceDetails.price}</div>
+                     </div>}
+
+                     <form  onSubmit={handleSubmit} method="post">
                      <div>Instructions</div>
-                     <input
-                    type='textarea'
+                     <textarea
+                    type='text'
                     required
                     className='booking-Inputs'
                      onChange={(e) => setInstructions(e.target.value)}
@@ -110,12 +132,13 @@ function ServiceDetails(){
                      {enoughMoney() ?
                      <button
                      className='booking-Inputs'
-                    type="submit"
-                    id='submit-booking'
-                    // disabled={enoughMoney}
+                     type="submit"
+                     id='submit-booking'
                         >Order</button> :
                         <div id='not-enough-money'> Please add funds to your balance to book! </div>
                         }
+                    </form>
+
                 </div>
 
 
