@@ -72,7 +72,7 @@ function ServiceDetails(){
     // console.log('owner', serviceOwner)
 
 
-    if(!serviceDetailsData.length || !serviceOwnerArray.length || !bookings.length ){
+    if(!serviceDetailsData.length || !serviceOwnerArray.length ){
         return null
     }
     const alreadyBookedByUser = bookings.filter(booking => booking.user_id === sessionUser?.id)
