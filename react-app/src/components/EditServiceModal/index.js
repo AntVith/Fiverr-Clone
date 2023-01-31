@@ -11,15 +11,20 @@ function EditService(serviceId){
     const history = useHistory()
     const dispatch = useDispatch()
     const {closeModal} = useModal();
+    const servicesObj = useSelector(state => state.services.allServices)
 
-    const [title, setTitle] = useState('')
-    const [description, setDescription] = useState('')
-    const [price, setPrice] = useState()
-    const [thumbnail, setThumbnail] = useState('')
+    const serviceToEditId = serviceId.serviceId
+    const serviceToEdit = servicesObj[serviceToEditId]
+    console.log('edit', serviceToEdit)
+
+    const [title, setTitle] = useState(serviceToEdit.title)
+    const [description, setDescription] = useState(serviceToEdit.description)
+    const [price, setPrice] = useState(serviceToEdit.price)
+    const [thumbnail, setThumbnail] = useState(serviceToEdit.thumbnail)
     const [errors, setErrors] = useState([]);
     const [showSuccess, setSuccess] = useState(false);
 
-    const serviceToEditId = serviceId.serviceId
+
 
     const handleSubmit = async (e) => {
         e.preventDefault()
@@ -99,7 +104,7 @@ function EditService(serviceId){
                         />
                 </div>
                 <div id='thumbnail-post'>
-                    <label className='post-labels'>Thumbnail Image</label>
+                    <label className='post-labels'>Thumbnail Image URL</label>
                         <input
                         type='text'
                         required
