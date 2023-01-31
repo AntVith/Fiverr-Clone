@@ -41,6 +41,8 @@ const NavBar = () => {
         <NavLink
           style={{ textDecoration: 'none' }}
           to={`/orders`} exact={true} activeClassName='active'
+          // className='navbar-buttons'
+          id='order-navlink'
           >
             Orders
           </NavLink>

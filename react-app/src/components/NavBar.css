@@ -59,6 +59,16 @@ button.Striverr.Business{
     margin-top: 5px;
     margin-right:30px;
 }
+#order-navlink{
+    background-color: transparent;
+    border:none;
+    font-size: 18px;
+    /* font-weight: bold; */
+    padding: 5px;
+    margin-right: 30px;
+    margin-top: 4px;
+    color:#74767E
+}
 #logout-button{
     background-color: transparent;
     border:none;
@@ -67,6 +77,7 @@ button.Striverr.Business{
     padding: 5px;
     margin-right: 30px;
     margin-top: 5px;
+
 }
 
 button.Sign.In{
