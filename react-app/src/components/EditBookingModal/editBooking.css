@@ -32,7 +32,8 @@
 }
 #edit-booking-form-input{
     height:60px;
-    width:100%
+    width:100%;
+    /* font: 400 16px "Macan","Helvetica Neue",Helvetica,Arial,sans-serif; */
 }
 #edit-booking-button{
     margin-top: 3%;
