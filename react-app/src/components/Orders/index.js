@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useHistory } from 'react-router-dom';
 import {getUserBookings} from '../../store/booking'
+import {deleteABooking} from '../../store/booking'
+import OpenModalButton from '../OpenModalButton'
+import EditBookingModal from '../EditBookingModal';
 import './Orders.css'
 
 function UserOrders(){
@@ -9,7 +12,7 @@ function UserOrders(){
     const sessionUser = useSelector(state => state.session.user);
     const bookingsObj = useSelector(state => state.bookings.bookings)
     const allServicesObj = useSelector(state => state.services.allServices)
-
+    const history = useHistory()
 
     const bookings = Object.values(bookingsObj)
     const allServices = Object.values(allServicesObj)
@@ -17,6 +20,19 @@ function UserOrders(){
     useEffect(() => {
         dispatch(getUserBookings(sessionUser.id))
     }, [dispatch])
+    let message = ''
+    const handleDeletion = async (bookingId) => {
+
+
+        const deletedBooking = await dispatch(deleteABooking(bookingId))
+
+        if(deletedBooking){
+            message = deletedBooking.message
+        }
+        history.push('/orders')
+
+
+    }
 
 
     if(!bookingsObj || !allServicesObj){
@@ -45,6 +61,7 @@ function UserOrders(){
         <div  id='service-container'>
             <div id='all-services'>
             {bookings.map(booking => (
+                <div>
                 <NavLink
                 to={`/services/${booking.service_id}`}
                 style={{ textDecoration: 'none' }}
@@ -60,11 +77,18 @@ function UserOrders(){
                             </div>
                             <div id='price-line'>
                             <div id='price-label'>Price paid: </div>
-                            <div id='homepage-price'>{servicePriceFinder(booking.service_id)} </div>
+                            <div id='homepage-price'>${servicePriceFinder(booking.service_id)} </div>
                             </div>
                         </div>
                     </div>
                 </NavLink>
+                <OpenModalButton
+                buttonText='Edit Instructions'
+
+                modalComponent={<EditBookingModal bookingId={`${booking.id}`} />}
+            />
+                <button onClick={ () => handleDeletion(booking.id)}> Cancel Service</button>
+                </div>
             ))}
             </div>
 
