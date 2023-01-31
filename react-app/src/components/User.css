@@ -1,0 +1,125 @@
+
+#profile-page-container{
+    display: flex;
+    flex-direction: row;
+    margin: 0 5% 0 5%;
+    font: 400 16px/24px "Macan","Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+#profile-page-profile-info{
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #e4e5e7;
+    height:400px;
+    margin-left: 5%;
+    width:30%;
+    align-items: center;
+}
+#profile-page-photo{
+    height: 200px;
+    width:200px;
+    border-radius: 70%;
+    object-fit: cover;
+    margin-top: 10%;
+
+}
+#profile-info-profile-page{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}
+#profile-page-username{
+    font-size: 20px;
+    font-weight: 700;
+    margin-top: 10%;
+}
+#profile-page-email{
+    font-size: 18px;
+    font-weight: 400;
+    margin-top: 5%;
+}
+
+#all-services-profile-page{
+    display: flex;
+    flex-direction: column;
+    /* flex-wrap: wrap; */
+    margin-left: 5%;
+    align-items: center;
+}
+#service-title-profile-page{
+    font-size: 30px;
+    margin-bottom: 5%;
+    border-bottom: 1px solid #e4e5e7;
+    padding-bottom: 2%;
+}
+.service-info-profile{
+    display: flex;
+    flex-direction: column;
+    /* align-items: center; */
+    border: 1px solid #e4e5e7;
+    width:100%
+}
+#service-navlink-profile{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* width:50% */
+}
+.profile-page-thumbnail{
+    height:200px;
+    width:100%;
+    object-fit: cover;
+}
+#service-title-profile{
+    font-size: 30px;
+    color: darkslategray;
+    margin-bottom: 2%;
+    border-bottom: 2px solid  #e4e5e7;
+    padding-bottom: 2%;
+    margin-top: 2%;
+}
+#service-description-profile{
+    font-size: 20px;
+    color: darkslategray;
+    margin-bottom: 2%;
+}
+#price-details-profile{
+    display: flex;
+    flex-direction: row;
+}
+#profile-price-label{
+    margin-right: 10%;
+    font-size: 20px;
+    color:darkslategray;
+}
+#service-price-profile{
+    color:#1dbf73;;
+    font-size: 20px;
+}
+#buttons-profile{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 2%;
+    margin-bottom: 2%;
+}
+/* #edit-service-button-profile{
+   padding-right: 100%;
+} */
+button.Edit.Service{
+    background-color: transparent;
+    border: 2px solid #1dbf73;;
+    color:#1dbf73;;
+    font-weight: 700;
+    padding: 5px;
+    margin-left: 1rem;
+}
+#delete-service-profile{
+    background-color: transparent;
+    border: 2px solid darkslategray;
+    color:darkslategray;
+    font-weight: 700;
+    padding: 5px;
+    margin-right: 1rem;
+}

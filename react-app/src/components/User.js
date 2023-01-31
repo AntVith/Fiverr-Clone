@@ -4,6 +4,7 @@ import { NavLink, useHistory, useParams } from 'react-router-dom';
 import EditService from './EditServiceModal/'
 import OpenModalButton from './OpenModalButton'
 import { deleteAService } from '../store/service';
+import './User.css'
 
 function User() {
   const [user, setUser] = useState({});
@@ -51,35 +52,50 @@ function User() {
   }
 
   return (
-    <div>
-      <div>
-        <strong>User Id</strong> {userId}
+    <div id='profile-page-container'>
+      <div id='profile-page-profile-info'>
+          <div>
+            <img src={user.profile_photo}  id='profile-page-photo'/>
+          </div>
+          <div id='profile-info-profile-page'>
+            <div id='profile-page-username'>
+               {user.username}
+            </div>
+            <div id='profile-page-email'>
+               {user.email}
+            </div>
+          </div>
       </div>
-      <div>
-        <strong>Username</strong> {user.username}
-      </div>
-      <div>
-        <strong>Email</strong> {user.email}
-      </div>
-      <div>{userServices.map(service => (
-        <div>
+      <div id='all-services-profile-page'>
+        <div id='service-title-profile-page'>Services you provide</div>
+        {userServices.map(service => (
+        <div className='service-info-profile'>
         <NavLink
-        to={`/services/${service.id}`}>
-          <img src={service.thumbnail}/>
-          {service.title}
-          {service.description}
-          {service.price}
-          <div> space </div>
+        to={`/services/${service.id}`}
+        id='service-navlink-profile'
+        style={{ textDecoration: 'none' }}
+        >
+          <img src={service.thumbnail} className='profile-page-thumbnail'/>
+          <div id='service-title-profile'>{service.title}</div>
+          <div id='service-description-profile'>{service.description}</div>
+          <div id='price-details-profile'>
+          <div id='profile-price-label'>Price: </div>
+          <div id='service-price-profile'> ${service.price}</div>
+          </div>
         </NavLink>
-        { sessionUserObj.id === service.user_id &&
-        <div>
-        <OpenModalButton
-        buttonText='Edit Service'
-        modalComponent={<EditService serviceId ={ `${service.id}`} />}
-        />
-        <button onClick={() => handleDeletion(service.id)}>Delete</button>
+        {/* { sessionUserObj.id === service.user_id && */}
+        <div id='buttons-profile'>
+          <div id='edit-service-button-profile'>
+            <OpenModalButton
+            buttonText='Edit Service'
+            modalComponent={<EditService serviceId ={ `${service.id}`} />}
+            />
+          </div>
+          <div id='delete-service-div-profile'>
+        <button onClick={() => handleDeletion(service.id)} id='delete-service-profile'>Delete Service</button>
         </div>
-        }
+        </div>
+        {/* } */}
 
         </div>
 
