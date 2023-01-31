@@ -25,9 +25,13 @@ const [errors, setErrors] = useState([]);
     } else{
         closeModal()
     }
-
-
   };
+
+  const demoLogin = () => {
+    setEmail('demo@aa.io')
+    setPassword('password')
+    return dispatch(login(email, password));
+  }
 
   const updateEmail = (e) => {
     setEmail(e.target.value);
@@ -76,6 +80,7 @@ const [errors, setErrors] = useState([]);
       <button
       id='login-submit'
       type='submit'>Login</button>
+       <button  id='demo-user-login' onClick={demoLogin} type='submit'>Demo User</button>
     </form>
     </div>
   );
