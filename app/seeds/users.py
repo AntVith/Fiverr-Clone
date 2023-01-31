@@ -4,11 +4,11 @@ from app.models import db, User, environment, SCHEMA
 # Adds a demo user, you can add other users here if you want
 def seed_users():
     demo = User(
-        first_name = 'John', last_name ='Doe' , username='Demo', profile_photo = 'Profile.Photo.1', balance=1200, bio='Junior Developer',  email='demo@aa.io', password='password')
+        first_name = 'John', last_name ='Doe' , username='Demo', profile_photo = 'https://imgv3.fotor.com/images/blog-cover-image/10-profile-picture-ideas-to-make-you-stand-out.jpg', balance=1200, bio='Junior Developer',  email='demo@aa.io', password='password')
     marnie = User(
-        first_name = 'Marnie', last_name = 'Bills' , username='marnie', profile_photo = 'Profile.Photo.2', balance=1100, bio='Senior Developer',  email='marnie@aa.io', password='password')
+        first_name = 'Marnie', last_name = 'Bills' , username='marnie', profile_photo = 'https://expertphotography.b-cdn.net/wp-content/uploads/2020/08/profile-photos-4.jpg', balance=1100, bio='Senior Developer',  email='marnie@aa.io', password='password')
     bobbie = User(
-        first_name = 'Bobbie', last_name ='Flay' , username='Filay', profile_photo = 'Profile.Photo.3', balance=100, bio='Python Proficient',  email='bobbie@aa.io', password='password')
+        first_name = 'Bobbie', last_name ='Flay' , username='Filay', profile_photo = 'https://w0.peakpx.com/wallpaper/979/89/HD-wallpaper-purple-smile-design-eye-smily-profile-pic-face-thumbnail.jpg', balance=100, bio='Python Proficient',  email='bobbie@aa.io', password='password')
 
     db.session.add(demo)
     db.session.add(marnie)

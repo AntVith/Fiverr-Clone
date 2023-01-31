@@ -4,11 +4,11 @@ from app.models import db, Service, environment, SCHEMA
 # Adds a demo user, you can add other users here if you want
 def seed_services():
     service_1 = Service(
-        user_id = 1, title='Python Backend Proficient' , description='I can help with python', price = 150 , thumbnail= 'thumbnail1')
+        user_id = 1, title='Python Backend Proficient' , description='I can help with python', price = 150 , thumbnail= 'https://www.python.org/static/community_logos/python-logo-master-v3-TM-flattened.png')
     service_2 = Service(
-        user_id = 2, title='Java-Script Backend Proficient' , description='I can help with JS', price = 300 , thumbnail= 'thumbnail2')
+        user_id = 2, title='Java-Script Backend Proficient' , description='I can help with JS', price = 300 , thumbnail= 'https://cdn.geekboots.com/geek/javascript-meta-1652702081069.jpg')
     service_3 = Service(
-        user_id = 3, title=' React Proficient' , description='I can help with react', price = 400 , thumbnail= 'thumbnail3')
+        user_id = 3, title=' React Proficient' , description='I can help with react', price = 400 , thumbnail= 'https://www.goodworklabs.com/wp-content/uploads/2016/10/reactjs.png')
 
     db.session.add(service_1)
     db.session.add(service_2)

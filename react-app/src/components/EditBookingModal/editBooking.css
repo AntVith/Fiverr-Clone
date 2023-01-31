@@ -1,0 +1,49 @@
+#edit-booking-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    align-self: center;
+}
+#edit-booking-form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    align-self: center;
+    width:70%;
+    font: 400 16px/24px "Macan","Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+#edit-booking-title{
+    color: #404145;
+    margin-top: 25%;
+    font-weight: 500;
+}
+#instructions-edit-booking{
+    display: flex;
+    flex-direction: column;
+    margin-top: 10%;
+    margin-bottom: 5%;
+    width:100%
+}
+#edit-booking-label{
+    font-size: 17px;
+    margin-bottom: 2%;
+}
+#edit-booking-form-input{
+    height:60px;
+    width:100%;
+    /* font: 400 16px "Macan","Helvetica Neue",Helvetica,Arial,sans-serif; */
+}
+#edit-booking-button{
+    margin-top: 3%;
+    width:102%;
+    height:40px;
+    margin-left: 2.3%;
+    background-color: #1dbf73;
+    color:white;
+    font-weight: bold;
+    font-size: 18px;
+    border: none;
+    border-radius: 3%;
+}
