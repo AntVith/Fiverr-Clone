@@ -61,12 +61,12 @@ function UserOrders(){
         <div  id='service-container'>
             <div id='all-services'>
             {bookings.map(booking => (
-                <div>
+                <div id='individual-booking-card'>
                 <NavLink
                 to={`/services/${booking.service_id}`}
                 style={{ textDecoration: 'none' }}
                 >
-                    <div id='service-details'>
+                    <div id='service-details-booking'>
                         <div id='homepage-service-details'>
                             <img src={serviceImageFinder(booking.service_id)} id='service-image-homepage' />
                             <div id='homepage-title'>{serviceTitleFinder(booking.service_id)}</div>
@@ -82,12 +82,14 @@ function UserOrders(){
                         </div>
                     </div>
                 </NavLink>
+                <div id='button-booking-details'>
                 <OpenModalButton
                 buttonText='Edit Instructions'
 
                 modalComponent={<EditBookingModal bookingId={`${booking.id}`} />}
-            />
-                <button onClick={ () => handleDeletion(booking.id)}> Cancel Service</button>
+                />
+                <button onClick={ () => handleDeletion(booking.id)} id='cancel-service-button'> Cancel Service</button>
+                </div>
                 </div>
             ))}
             </div>

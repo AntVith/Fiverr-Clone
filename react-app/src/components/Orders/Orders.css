@@ -13,8 +13,10 @@
     /* padding-left: 2%; */
     /* justify-content: space-evenly;, */
 }
-
-#service-details{
+#individual-booking-card{
+    padding-bottom: 12%;
+}
+#service-details-booking{
     display: flex;
     flex-direction: column;
     margin-left: 0;
@@ -23,7 +25,6 @@
     max-height:350px;
     flex: 0 0 auto;
     margin-right: 20px;
-    padding-bottom: 12%;
     padding-left: 3%;
     font: 400 16px/24px "Macan","Helvetica Neue",Helvetica,Arial,sans-serif;
 }
@@ -88,4 +89,28 @@
 #homepage-price{
     margin-left: 4%;
     margin-right: 3%;
+}
+#button-booking-details{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 2%;
+    margin-bottom: 2%;
+}
+
+button.Edit.Instructions{
+    background-color: transparent;
+    border: 2px solid #1dbf73;;
+    color:#1dbf73;;
+    font-weight: 700;
+    padding: 5px;
+    margin-left: .6rem;
+}
+#cancel-service-button{
+    background-color: transparent;
+    border: 2px solid darkslategray;
+    color:darkslategray;
+    font-weight: 700;
+    padding: 5px;
+    margin-right: .6rem;
 }
