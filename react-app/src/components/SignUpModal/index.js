@@ -22,8 +22,13 @@ function SignUp(){
     const onSignUp = async (e) => {
       e.preventDefault();
         setErrors([])
+        if(username.length > 30){
+           return setErrors(['Username must be 30 characters or less'])
+        }
+
         const data = await dispatch(signUp( first_name, last_name, username, email, bio, password))
-        // console.log('data', data)
+        console.log('data', data)
+
 
         if (data && data.length > 0) {
             let errorMessages = []
@@ -35,6 +40,8 @@ function SignUp(){
         } else{
              return closeModal()
         }
+
+
 
     };
     const updateFirstName = (e) => {
