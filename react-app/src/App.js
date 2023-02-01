@@ -37,9 +37,9 @@ function App() {
         <ProtectedRoute path='/users/:userId' exact={true} >
           <User />
         </ProtectedRoute>
-        <Route path='/orders' exact={true}>
+        <ProtectedRoute path='/orders' exact={true}>
           <UserOrders />
-        </Route>
+        </ProtectedRoute>
         <Route path='/login' exact={true}>
           <LoginForm />
         </Route>
