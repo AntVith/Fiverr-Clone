@@ -14,7 +14,7 @@ function UploadNewService(){
 
     const [title, setTitle] = useState('')
     const [description, setDescription] = useState('')
-    const [price, setPrice] = useState()
+    const [price, setPrice] = useState('')
     const [thumbnail, setThumbnail] = useState('')
     const [errors, setErrors] = useState([]);
     const [showSuccess, setSuccess] = useState(false);
@@ -22,6 +22,10 @@ function UploadNewService(){
     const handleSubmit = async (e) => {
         e.preventDefault()
         setErrors([])
+
+        if(price < 1){
+            return setErrors(['Price must be $1 or more'])
+        }
 
         const formData = {
             "user_id": sessionUser.id,
@@ -31,27 +35,20 @@ function UploadNewService(){
             thumbnail
         }
 
-        if(errors.length){
-            return
-        } else{
 
 
-             console.log('in handle submit', formData)
-             const createdService = await dispatch(createService(formData))
-
-             setSuccess(true);
-             setTimeout(() => window.location.reload(true), 1000);
-
-
-
-            if(createdService){
-                 (closeModal)
+        console.log('in handle submit', formData)
+         const createdService = await dispatch(createService(formData))
+         setSuccess(true);
+         setTimeout(() => window.location.reload(true), 1000);
+        if(createdService){
+             (closeModal)
                  // (setTimeout(() => {
                  //     console.log('waiting')
                  //   }, 1000))
-                 (history.push(`/services/${createdService.id}`))
+             (history.push(`/services/${createdService.id}`))
                 }
-        }
+
     }
 
 
@@ -59,11 +56,11 @@ function UploadNewService(){
         <div id='UploadServiceContainer'>
             <form id='upload-service-form' onSubmit={handleSubmit} method="post">
                 <h2 id='post-title'>Upload your service</h2>
-                <ul>
+                <div>
                     {errors.map((error, idx) => (
-                      <li key={idx}>{error}</li>
+                      <div key={idx}>{error}</div>
                      ))}
-                 </ul>
+                 </div>
                 <div id='title-post'>
                      <label className='post-labels'>Title</label>
                      <input
