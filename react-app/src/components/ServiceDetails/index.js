@@ -4,6 +4,7 @@ import { useHistory, useParams } from 'react-router-dom';
 import {getServiceDetails} from '../../store/service'
 import { postABooking } from '../../store/booking';
 import {editAUserBalance} from '../../store/session'
+import {getAllServices} from '../../store/service'
 import './ServiceDetails.css'
 function ServiceDetails(){
     const {serviceId} = useParams()
@@ -31,6 +32,9 @@ function ServiceDetails(){
           }
           fetchBookings();
     }, [dispatch, serviceId])
+    useEffect(() => {
+        dispatch(getAllServices())
+    }, [dispatch])
 
 
 
