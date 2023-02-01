@@ -32,9 +32,9 @@ function User() {
   if (!user) {
     return null;
   }
-  if(!allServices.length){
-    return null
-  }
+  // if(!allServices.length){
+  //   return null
+  // }
   if(!sessionUser.length){
     return null
   }
