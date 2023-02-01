@@ -59,7 +59,7 @@ function UserOrders(){
     return (
         <div id='all-bookings'>
         <div  id='service-container'>
-        <div id='orders-title-for-page'> Services you've booked :</div>
+        <div id='orders-title-for-page'> Services you've booked</div>
             <div id='all-services'>
             {bookings.map(booking => (
                 <div id='individual-booking-card'>
