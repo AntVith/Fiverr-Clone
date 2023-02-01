@@ -12,15 +12,20 @@
     /* object-fit: cover; */
     border: 1px solid #e4e5e7
 }
+#splash-image-login{
+    width:100%;
+    object-fit: cover;
+}
 /* #service-container{
-    margin: 0 5% 0 5%;
+    display: flex;
+    justify-content: center;
 } */
-#all-services{
+#all-services-home{
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     width:100%;
-    justify-content: flex-start;
+    justify-content: center;
     padding-top: 3%;
     border: 1px solid #e4e5e7;
     border-radius: 2%;

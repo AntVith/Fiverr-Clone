@@ -66,7 +66,7 @@ function AllServices() {
         </TransitionGroup>
       </div>
         <div id='service-container'>
-            <div id='all-services'>
+            <div id='all-services-home'>
             {services.map(service => (
 
                 <NavLink
