@@ -64,6 +64,9 @@ function User() {
             <div id='profile-page-email'>
                {user.email}
             </div>
+            <div id='profile-page-balance'>
+              Balance:  ${user.balance}
+            </div>
           </div>
       </div>
       <div id='all-services-profile-page'>

@@ -39,6 +39,11 @@
     font-weight: 400;
     margin-top: 5%;
 }
+#profile-page-balance{
+    font-size: 20px;
+    font-weight: 400;
+    margin-top: 5%;
+}
 
 #all-services-profile-page{
     display: flex;
