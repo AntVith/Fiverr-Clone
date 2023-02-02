@@ -1,3 +1,7 @@
+
+#modal-content{
+    overflow: scroll;
+}
 #sign-up-form-container{
     display: flex;
     flex-direction: column;

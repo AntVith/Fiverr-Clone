@@ -46,7 +46,7 @@ function SignUp(){
                  let desiredSecondPortion = secondPortionArr.slice(2).join(' ')
 
                 let errorString = `${firstPortion} ${desiredSecondPortion}`
-                errorMessages = [errorString]
+                errorMessages.push(errorString)
                 })
 
             setErrors(errorMessages)
