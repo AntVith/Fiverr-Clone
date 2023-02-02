@@ -33,9 +33,22 @@ function SignUp(){
         if (data && data.length > 0) {
             let errorMessages = []
              data.forEach(error => {
+                console.log('error', error)
                 let message = error.split(':')
-                errorMessages.push(message[1])
+                let field = message[0]
+                let firstPortion = field.split('_')
+
+                 if(Array.isArray(firstPortion)){
+                  firstPortion = firstPortion.join('')
+                 }
+                 let secondPortion = message[1]
+                 let secondPortionArr = secondPortion.split(' ')
+                 let desiredSecondPortion = secondPortionArr.slice(2).join(' ')
+
+                let errorString = `${firstPortion} ${desiredSecondPortion}`
+                errorMessages = [errorString]
                 })
+
             setErrors(errorMessages)
         } else{
              return closeModal()
