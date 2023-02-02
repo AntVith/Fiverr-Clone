@@ -5,6 +5,7 @@ import {getUserBookings} from '../../store/booking'
 import {deleteABooking} from '../../store/booking'
 import OpenModalButton from '../OpenModalButton'
 import EditBookingModal from '../EditBookingModal';
+import {getAllServices} from '../../store/service'
 import './Orders.css'
 
 function UserOrders(){
@@ -20,6 +21,12 @@ function UserOrders(){
     useEffect(() => {
         dispatch(getUserBookings(sessionUser.id))
     }, [dispatch])
+
+    useEffect(() => {
+        dispatch(getAllServices())
+    }, [dispatch])
+
+
     let message = ''
     const handleDeletion = async (bookingId) => {
 

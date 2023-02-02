@@ -4,6 +4,7 @@ import { NavLink, useHistory, useParams } from 'react-router-dom';
 import EditService from './EditServiceModal/'
 import OpenModalButton from './OpenModalButton'
 import { deleteAService } from '../store/service';
+import {getAllServices} from '../store/service'
 import './User.css'
 
 function User() {
@@ -28,6 +29,9 @@ function User() {
       setUser(user);
     })();
   }, [userId]);
+  useEffect(() => {
+    dispatch(getAllServices())
+}, [dispatch])
 
   if (!user) {
     return null;
