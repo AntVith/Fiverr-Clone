@@ -85,7 +85,9 @@ function User() {
         id='service-navlink-profile'
         style={{ textDecoration: 'none' }}
         >
-          <img src={service.thumbnail} className='profile-page-thumbnail'/>
+          <img src={service.thumbnail} className='profile-page-thumbnail'
+          onError={e => {e.target.src = 'https://usa.bootcampcdn.com/wp-content/uploads/sites/108/2021/03/CDG_blog_post_image_02-2.jpg'}}
+          />
           <div id='service-title-profile'>{service.title}</div>
           <div id='service-description-profile'>{service.description}</div>
           <div id='price-details-profile'>

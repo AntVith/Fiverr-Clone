@@ -75,7 +75,10 @@ function AllServices() {
                 className='navlink-service-cards-home'
                 >
                     <div id='service-details'>
-                        <img src={service.thumbnail} id='service-image-homepage' />
+                        <img src={service.thumbnail}
+                        id='service-image-homepage'
+                        onError={e => {e.target.src = 'https://usa.bootcampcdn.com/wp-content/uploads/sites/108/2021/03/CDG_blog_post_image_02-2.jpg'}}
+                         />
                         <div id='homepage-service-details'>
                             <div id='profile-line-card'>
                                 <img src={profilePhotoFinder(service.user_id)} id='profile-photo-homepage'/>
