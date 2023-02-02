@@ -72,6 +72,7 @@ function AllServices() {
                 <NavLink
                 to={`/services/${service.id}`}
                 style={{ textDecoration: 'none' }}
+                className='navlink-service-cards-home'
                 >
                     <div id='service-details'>
                         <img src={service.thumbnail} id='service-image-homepage' />
