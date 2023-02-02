@@ -123,6 +123,9 @@ button.Edit.Service{
     padding: 5px;
     margin-left: 1rem;
 }
+button.Edit.Service:hover{
+    background-color: #e4e5e7;
+}
 #delete-service-profile{
     background-color: transparent;
     border: 2px solid darkslategray;
@@ -130,4 +133,7 @@ button.Edit.Service{
     font-weight: 700;
     padding: 5px;
     margin-right: 1rem;
+}
+#delete-service-profile:hover{
+    background-color: #e4e5e7;
 }

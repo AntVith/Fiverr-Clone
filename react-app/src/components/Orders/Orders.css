@@ -129,6 +129,9 @@ button.Edit.Instructions{
     padding: 5px;
     margin-left: .6rem;
 }
+button.Edit.Instructions:hover{
+    background-color: #e4e5e7;
+}
 #cancel-service-button{
     background-color: transparent;
     border: 2px solid darkslategray;
@@ -136,4 +139,7 @@ button.Edit.Instructions{
     font-weight: 700;
     padding: 5px;
     margin-right: .6rem;
+}
+#cancel-service-button:hover{
+    background-color: #e4e5e7;
 }
