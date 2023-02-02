@@ -25,7 +25,7 @@ function UserOrders(){
 
 
         const deletedBooking = await dispatch(deleteABooking(bookingId))
-
+        alert('Canceled Successfully!')
         if(deletedBooking){
             message = deletedBooking.message
         }

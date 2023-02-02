@@ -43,7 +43,10 @@ function User() {
 
   let message = ''
   const handleDeletion = async (serviceId) => {
+
     const response = await dispatch(deleteAService(serviceId))
+    alert('Deleted Successfully!')
+
     if (response) {
       message = response.message
     }
