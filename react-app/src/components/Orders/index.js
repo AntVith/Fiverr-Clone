@@ -71,12 +71,12 @@ function UserOrders(){
                         <div id='homepage-service-details'>
                             <img src={serviceImageFinder(booking.service_id)} id='service-image-homepage' />
                             <div id='homepage-title'>{serviceTitleFinder(booking.service_id)}</div>
-                            <div>
-                                <div>Instructions you've given:</div>
-                                <div>{booking.instructions}</div>
+                            <div id='instructions-portion'>
+                                <div id='instructions-label'>Instructions you've given:</div>
+                                <div id='service-instructions'>{booking.instructions}</div>
 
                             </div>
-                            <div id='price-line'>
+                            <div id='price-line-orders'>
                             <div id='price-label'>Price paid: </div>
                             <div id='homepage-price'>${servicePriceFinder(booking.service_id)} </div>
                             </div>
