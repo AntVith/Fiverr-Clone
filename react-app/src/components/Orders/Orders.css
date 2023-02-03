@@ -77,17 +77,19 @@
     font-size: 20px;
     margin-bottom: 1%;
 }
-#homepage-title{
+#booking-title{
     font-size:16px;
     margin-bottom: 3%;
     font-weight: 500;
+    max-height: 50px;
+    overflow: scroll;
 }
 #instructions-portion{
     display: flex;
     flex-direction: column;
     /* min-height: 50px;
-    max-height: 100px; */
-    /* overflow: scroll; */
+    max-height: 100px;
+    overflow: scroll; */
 }
 #instructions-label{
     margin-bottom: 2%;
@@ -97,7 +99,7 @@
 }
 #service-instructions{
     font-size: 15px;
-    min-height: 30px;
+    min-height: 60px;
     max-height: 60px;
     overflow: scroll;
 }
