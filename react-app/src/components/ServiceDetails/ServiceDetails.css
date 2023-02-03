@@ -3,6 +3,7 @@
     font: 400 16px/24px "Macan","Helvetica Neue",Helvetica,Arial,sans-serif;
     display: flex;
     flex-direction: row;
+    margin-bottom: 5%;
 }
 .details-title{
     font-size: 30px;

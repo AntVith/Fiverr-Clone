@@ -4,6 +4,7 @@
     flex-direction: row;
     margin: 0 5% 0 5%;
     font: 400 16px/24px "Macan","Helvetica Neue",Helvetica,Arial,sans-serif;
+    margin-bottom: 5%;
 }
 #profile-page-profile-info{
     display: flex;
