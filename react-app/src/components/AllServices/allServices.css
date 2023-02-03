@@ -31,7 +31,8 @@
     padding-top: 3%;
     border: 1px solid #e4e5e7;
     border-radius: 2%;
-    align-items: center;
+    margin-bottom: 5%;
+    /* align-items: center; */
     align-self: center;
     /* padding-left: 2%; */
     /* justify-content: space-evenly; */
