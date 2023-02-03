@@ -12,7 +12,7 @@ def seed_bookings():
     booking_4 = Booking(
         user_id = 1, service_id =10 , instructions='I have a personal python project that could use your expertise in setting up.')
     booking_5 = Booking(
-        user_id = 1, service_id =9 , instructions='I want to progress my React skills and your help would be the perfect resource!')
+        user_id = 1, service_id =8 , instructions='I want to progress my React skills and your help would be the perfect resource!')
     booking_6 = Booking(
         user_id = 2, service_id =10 , instructions='With your help we can set up the foundation to build on for my start-up.')
     booking_7 = Booking(
