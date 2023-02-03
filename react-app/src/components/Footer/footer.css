@@ -1,0 +1,71 @@
+
+.main-footer{
+    /* color: #1dbf73; */
+    color:black;
+    background-color:lightgray;
+    /* background-color: black; */
+    /* background-color: white; */
+    border-top: 1px rgb(0, 0, 0, 0.3) solid;
+    /* padding: 7px; */
+    font: 400 16px/24px "Macan","Helvetica Neue",Helvetica,Arial,sans-serif;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 9000;
+    height:50px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+.footer-row{
+    /* display: flex; */
+    /* flex-direction: row; */
+    justify-content: center;
+    width:30%;
+    align-items: center;
+    align-self: center;
+}
+
+#footer-col1{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 5% 0 5%;
+}
+#dev-name{
+    font-size: 23px;
+    font-weight: 600;
+    /* margin-right: 10%; */
+}
+
+#github-cat-logo{
+    height: 35px;
+    width: 100%;
+    object-fit: cover;
+    /* background-color: #1dbf73; */
+    background-color: black;
+    border-radius: 80%;
+    margin-top: 20%;
+}
+#github-cat-logo:hover{
+    /* background-color: black; */
+    background-color: #1dbf73;
+    border-radius: 80%;
+}
+#linked-in-logo{
+    height: 35px;
+    width: 100%;
+    color: white;
+    object-fit: cover;
+    /* background-color: #1dbf73; */
+    background-color: black;
+    margin-top: 20%;
+    border-radius: 10%;
+}
+#linked-in-logo:hover{
+    /* background-color: black; */
+    background-color: #1dbf73;
+}

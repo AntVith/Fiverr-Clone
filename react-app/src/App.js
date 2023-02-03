@@ -11,6 +11,7 @@ import { authenticate } from './store/session';
 import AllServices from './components/AllServices/'
 import SeviceDetails from './components/ServiceDetails/'
 import UserOrders from './components/Orders';
+import Footer from './components/Footer/footer';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -37,9 +38,9 @@ function App() {
         <ProtectedRoute path='/users/:userId' exact={true} >
           <User />
         </ProtectedRoute>
-        <Route path='/orders' exact={true}>
+        <ProtectedRoute path='/orders' exact={true}>
           <UserOrders />
-        </Route>
+        </ProtectedRoute>
         <Route path='/login' exact={true}>
           <LoginForm />
         </Route>
@@ -53,6 +54,7 @@ function App() {
           <AllServices />
         </Route>
       </Switch>
+      <Footer />
     </BrowserRouter>
   );
 }

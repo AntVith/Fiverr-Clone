@@ -3,6 +3,7 @@
     font: 400 16px/24px "Macan","Helvetica Neue",Helvetica,Arial,sans-serif;
     display: flex;
     flex-direction: row;
+    margin-bottom: 5%;
 }
 .details-title{
     font-size: 30px;
@@ -147,9 +148,18 @@
     color:#404145;
     /* margin-left: 20px; */
 }
-.booking-Inputs{
+/* .booking-Inputs{
     height:40px;
     width:87%;
+} */
+textarea.booking-Inputs{
+    resize: vertical;
+    max-width: 89%;
+    min-width: 89%;
+    max-height: 60px;
+    min-height: 35px;
+    height: 40px;
+
 }
 #submit-booking{
     margin-top: 5%;

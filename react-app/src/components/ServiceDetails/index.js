@@ -4,6 +4,7 @@ import { useHistory, useParams } from 'react-router-dom';
 import {getServiceDetails} from '../../store/service'
 import { postABooking } from '../../store/booking';
 import {editAUserBalance} from '../../store/session'
+import {getAllServices} from '../../store/service'
 import './ServiceDetails.css'
 function ServiceDetails(){
     const {serviceId} = useParams()
@@ -31,6 +32,9 @@ function ServiceDetails(){
           }
           fetchBookings();
     }, [dispatch, serviceId])
+    useEffect(() => {
+        dispatch(getAllServices())
+    }, [dispatch])
 
 
 
@@ -121,7 +125,8 @@ function ServiceDetails(){
             </div>
             <img
             className='details-image'
-            src={serviceDetails.thumbnail} />
+            src={serviceDetails.thumbnail}
+            onError={e => {e.target.src = 'https://usa.bootcampcdn.com/wp-content/uploads/sites/108/2021/03/CDG_blog_post_image_02-2.jpg'}} />
             <div id='details-description'>
                 <div id='Details-description-title'>About This Gig</div>
                 <div id='details-description-info'>{serviceDetails.description}</div>

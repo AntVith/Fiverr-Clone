@@ -30,6 +30,10 @@ function EditService(serviceId){
         e.preventDefault()
         setErrors([])
 
+        if(price < 1){
+            return setErrors(['Price must be $1 or more'])
+        }
+
         const formData = {
             "user_id": sessionUser.id,
             title,
@@ -60,11 +64,11 @@ function EditService(serviceId){
         <div id='UploadServiceContainer'>
             <form id='upload-service-form' onSubmit={handleSubmit} method="post">
             <h2 id='post-title'>Edit your service</h2>
-                <ul>
+                <div>
                     {errors.map((error, idx) => (
-                      <li key={idx}>{error}</li>
+                      <div key={idx}>{error}</div>
                      ))}
-                 </ul>
+                 </div>
 
                 <div id='title-post'>
                     <label className='post-labels'>Title</label>

@@ -104,7 +104,7 @@ const initialState = { allServices: {}, serviceDetails : {} };
 const serviceReducer = (state= initialState, action) => {
     switch (action.type) {
         case GET_ALL_SERVICES:{
-            const newState = { allServices: {}, serviceDetails : {} }
+            const newState = { allServices: {}, serviceDetails : {...state.serviceDetails} }
             action.data.services.forEach(service => {
                 newState.allServices[service.id] = service
             })

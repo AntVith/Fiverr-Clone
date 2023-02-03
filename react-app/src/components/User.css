@@ -4,6 +4,7 @@
     flex-direction: row;
     margin: 0 5% 0 5%;
     font: 400 16px/24px "Macan","Helvetica Neue",Helvetica,Arial,sans-serif;
+    margin-bottom: 5%;
 }
 #profile-page-profile-info{
     display: flex;
@@ -39,6 +40,11 @@
     font-weight: 400;
     margin-top: 5%;
 }
+#profile-page-balance{
+    font-size: 20px;
+    font-weight: 400;
+    margin-top: 5%;
+}
 
 #all-services-profile-page{
     display: flex;
@@ -52,13 +58,16 @@
     margin-bottom: 5%;
     border-bottom: 1px solid #e4e5e7;
     padding-bottom: 2%;
+    color: #74767E;
+    font-weight: 500;
 }
 .service-info-profile{
     display: flex;
     flex-direction: column;
     /* align-items: center; */
     border: 1px solid #e4e5e7;
-    width:100%
+    width:100%;
+    margin-bottom: 5%;
 }
 #service-navlink-profile{
     display: flex;
@@ -115,6 +124,9 @@ button.Edit.Service{
     padding: 5px;
     margin-left: 1rem;
 }
+button.Edit.Service:hover{
+    background-color: #e4e5e7;
+}
 #delete-service-profile{
     background-color: transparent;
     border: 2px solid darkslategray;
@@ -122,4 +134,7 @@ button.Edit.Service{
     font-weight: 700;
     padding: 5px;
     margin-right: 1rem;
+}
+#delete-service-profile:hover{
+    background-color: #e4e5e7;
 }

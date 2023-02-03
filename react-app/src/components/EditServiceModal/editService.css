@@ -32,6 +32,12 @@
     height:30px;
     width:100%
 }
+textarea.Post-Service-Inputs{
+    max-width: 100%;
+    min-width: 100%;
+    max-height: 60px;
+    min-height: 30px;
+}
 #submit-post{
     margin-top: 3%;
     width:102%;

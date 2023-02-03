@@ -1,9 +1,14 @@
+
+#modal-content{
+    overflow: scroll;
+}
 #sign-up-form-container{
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     align-self: center;
+    height: auto;
 }
 #sign-up-form{
     display: flex;

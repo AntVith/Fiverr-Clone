@@ -5,6 +5,7 @@ import {getUserBookings} from '../../store/booking'
 import {deleteABooking} from '../../store/booking'
 import OpenModalButton from '../OpenModalButton'
 import EditBookingModal from '../EditBookingModal';
+import {getAllServices} from '../../store/service'
 import './Orders.css'
 
 function UserOrders(){
@@ -20,12 +21,18 @@ function UserOrders(){
     useEffect(() => {
         dispatch(getUserBookings(sessionUser.id))
     }, [dispatch])
+
+    useEffect(() => {
+        dispatch(getAllServices())
+    }, [dispatch])
+
+
     let message = ''
     const handleDeletion = async (bookingId) => {
 
 
         const deletedBooking = await dispatch(deleteABooking(bookingId))
-
+        alert('Canceled Successfully!')
         if(deletedBooking){
             message = deletedBooking.message
         }
@@ -59,35 +66,40 @@ function UserOrders(){
     return (
         <div id='all-bookings'>
         <div  id='service-container'>
+        <div id='orders-title-for-page'> Services you've booked</div>
             <div id='all-services'>
             {bookings.map(booking => (
-                <div>
+                <div id='individual-booking-card'>
                 <NavLink
                 to={`/services/${booking.service_id}`}
                 style={{ textDecoration: 'none' }}
+                id='booking-navlink'
                 >
-                    <div id='service-details'>
-                        <div id='homepage-service-details'>
-                            <img src={serviceImageFinder(booking.service_id)} id='service-image-homepage' />
-                            <div id='homepage-title'>{serviceTitleFinder(booking.service_id)}</div>
-                            <div>
-                                <div>Instructions you've given:</div>
-                                <div>{booking.instructions}</div>
+                    <div id='service-details-booking'>
+                        <div id='booking-service-details'>
+                            <img src={serviceImageFinder(booking.service_id)} id='service-image-homepage'
+                            onError={e => {e.target.src = 'https://usa.bootcampcdn.com/wp-content/uploads/sites/108/2021/03/CDG_blog_post_image_02-2.jpg'}} />
+                            <div id='booking-title'>{serviceTitleFinder(booking.service_id)}</div>
+                            <div id='instructions-portion'>
+                                <div id='instructions-label'>Instructions you've given:</div>
+                                <div id='service-instructions'>{booking.instructions}</div>
 
                             </div>
-                            <div id='price-line'>
+                            <div id='price-line-orders'>
                             <div id='price-label'>Price paid: </div>
                             <div id='homepage-price'>${servicePriceFinder(booking.service_id)} </div>
                             </div>
                         </div>
                     </div>
                 </NavLink>
+                <div id='button-booking-details'>
                 <OpenModalButton
                 buttonText='Edit Instructions'
 
                 modalComponent={<EditBookingModal bookingId={`${booking.id}`} />}
-            />
-                <button onClick={ () => handleDeletion(booking.id)}> Cancel Service</button>
+                />
+                <button onClick={ () => handleDeletion(booking.id)} id='cancel-service-button'> Cancel Service</button>
+                </div>
                 </div>
             ))}
             </div>

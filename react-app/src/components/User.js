@@ -4,6 +4,7 @@ import { NavLink, useHistory, useParams } from 'react-router-dom';
 import EditService from './EditServiceModal/'
 import OpenModalButton from './OpenModalButton'
 import { deleteAService } from '../store/service';
+import {getAllServices} from '../store/service'
 import './User.css'
 
 function User() {
@@ -28,13 +29,16 @@ function User() {
       setUser(user);
     })();
   }, [userId]);
+  useEffect(() => {
+    dispatch(getAllServices())
+}, [dispatch])
 
   if (!user) {
     return null;
   }
-  if(!allServices.length){
-    return null
-  }
+  // if(!allServices.length){
+  //   return null
+  // }
   if(!sessionUser.length){
     return null
   }
@@ -43,7 +47,10 @@ function User() {
 
   let message = ''
   const handleDeletion = async (serviceId) => {
+
     const response = await dispatch(deleteAService(serviceId))
+    alert('Deleted Successfully!')
+
     if (response) {
       message = response.message
     }
@@ -64,6 +71,9 @@ function User() {
             <div id='profile-page-email'>
                {user.email}
             </div>
+            <div id='profile-page-balance'>
+              Balance:  ${user.balance}
+            </div>
           </div>
       </div>
       <div id='all-services-profile-page'>
@@ -75,7 +85,9 @@ function User() {
         id='service-navlink-profile'
         style={{ textDecoration: 'none' }}
         >
-          <img src={service.thumbnail} className='profile-page-thumbnail'/>
+          <img src={service.thumbnail} className='profile-page-thumbnail'
+          onError={e => {e.target.src = 'https://usa.bootcampcdn.com/wp-content/uploads/sites/108/2021/03/CDG_blog_post_image_02-2.jpg'}}
+          />
           <div id='service-title-profile'>{service.title}</div>
           <div id='service-description-profile'>{service.description}</div>
           <div id='price-details-profile'>
