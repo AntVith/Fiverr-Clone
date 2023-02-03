@@ -112,7 +112,7 @@ export const signUp = (first_name, last_name, username, email, bio,  password) =
       username,
       "profile_photo": "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png",
       email,
-      "balance": 100,
+      "balance": 800,
       bio,
       password,
     }),
