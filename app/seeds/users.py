@@ -10,7 +10,7 @@ def seed_users():
     bobbie = User(
         first_name = 'Bobbie', last_name ='Flay' , username='BobbieFlay', profile_photo = 'https://w0.peakpx.com/wallpaper/979/89/HD-wallpaper-purple-smile-design-eye-smily-profile-pic-face-thumbnail.jpg', balance=100, bio='Python Proficient software engineer',  email='bobbie@aa.io', password='password')
     Anthony = User(
-        first_name = 'Anthony', last_name ='Mathew' , username='AMatProTutor', profile_photo = 'https://www.morganstanley.com/content/dam/msdotcom/people/tiles/isaiah-dwuma.jpg.img.490.medium.jpg/1594668408164.jpg', balance=1000, bio='Software Engineering tutor for Python, JavaScript, React',  email='amat@aa.io', password='password')
+        first_name = 'Anthony', last_name ='Mathew' , username='AMatProTutor', profile_photo = 'https://www.morganstanley.com/content/dam/msdotcom/people/tiles/isaiah-dwuma.jpg.img.490.medium.jpg/1594668408164.jpg', balance=1000, bio='Software Engineering tutor for Python, JavaScript, React, Ruby, C++',  email='amat@aa.io', password='password')
     Tina = User(
         first_name = 'Tina', last_name ='Tina' , username='TinaSE', profile_photo = 'https://www.shutterstock.com/image-photo/close-headshot-portrait-young-20s-260nw-1921270919.jpg', balance=500, bio='Freelance Python Developer willing to provide help with all your Python needs',  email='tina@aa.io', password='password')
 
