@@ -73,9 +73,10 @@ function UserOrders(){
                 <NavLink
                 to={`/services/${booking.service_id}`}
                 style={{ textDecoration: 'none' }}
+                id='booking-navlink'
                 >
                     <div id='service-details-booking'>
-                        <div id='homepage-service-details'>
+                        <div id='booking-service-details'>
                             <img src={serviceImageFinder(booking.service_id)} id='service-image-homepage'
                             onError={e => {e.target.src = 'https://usa.bootcampcdn.com/wp-content/uploads/sites/108/2021/03/CDG_blog_post_image_02-2.jpg'}} />
                             <div id='homepage-title'>{serviceTitleFinder(booking.service_id)}</div>
