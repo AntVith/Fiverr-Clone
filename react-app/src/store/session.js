@@ -67,7 +67,7 @@ export const login = (email, password) => async (dispatch) => {
     const data = await response.json();
     console.log('data------', data)
     dispatch(setUser(data))
-    if(data.username === "Demo"){
+    if(data.username === "DemoUser"){
       let balance = 1500
       let userId = 1
       let newBalance = {
