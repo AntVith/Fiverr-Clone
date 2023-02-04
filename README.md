@@ -1,148 +1,90 @@
-# Flask React Project
+Welcome to Striverr, a freelance site for all things software engineering, programming, and tech!
 
-This is the starter for the Flask React project.
-
-## Getting started
-1. Clone this repository (only this branch)
-
-2. Install dependencies
-
-      ```bash
-      pipenv install -r requirements.txt
-      ```
-
-3. Create a **.env** file based on the example with proper settings for your
-   development environment
-
-4. Make sure the SQLite3 database connection URL is in the **.env** file
-
-5. This starter organizes all tables inside the `flask_schema` schema, defined
-   by the `SCHEMA` environment variable.  Replace the value for
-   `SCHEMA` with a unique name, **making sure you use the snake_case
-   convention**.
-
-6. Get into your pipenv, migrate your database, seed your database, and run your Flask app
-
-   ```bash
-   pipenv shell
-   ```
-
-   ```bash
-   flask db upgrade
-   ```
-
-   ```bash
-   flask seed all
-   ```
-
-   ```bash
-   flask run
-   ```
-
-7. To run the React App in development, checkout the [README](./react-app/README.md) inside the `react-app` directory.
+A clone of the popular freelance site Fiverr, designed to match its style, layout, and base functionality.
 
 
-## Deployment through Render.com
+-----------------------------------------------
 
-First, refer to your Render.com deployment articles for more detailed
-instructions about getting started with [Render.com], creating a production
-database, and deployment debugging tips.
+To accomplish this project I utilized:
 
-From the [Dashboard], click on the "New +" button in the navigation bar, and
-click on "Web Service" to create the application that will be deployed.
+Python, Javascript, React, Flask, SQLAlchemy, HTML, CSS
 
-Look for the name of the application you want to deploy, and click the "Connect"
-button to the right of the name.
+-----------------------------------------------
 
-Now, fill out the form to configure the build and start commands, as well as add
-the environment variables to properly deploy the application.
+FEATURES
 
-### Part A: Configure the Start and Build Commands
+Any user can go to this site and explore the main page and see all the services offered by the users.
+They can also click on any service offered to see more details such as the service description and information about the service provider.
+An unlogged-in user cannot book a service until they log in or sign up.
 
-Start by giving your application a name.
+![Screen Shot 2023-02-04 at 1 58 48 PM](https://user-images.githubusercontent.com/81838299/216784844-a36b9667-2e3c-41ff-857a-8df8fd5d6aa9.png)
+![Screen Shot 2023-02-04 at 1 59 27 PM](https://user-images.githubusercontent.com/81838299/216784847-46b5fae5-df60-4f31-8709-63aadef66830.png)
+![Screen Shot 2023-02-04 at 1 59 38 PM](https://user-images.githubusercontent.com/81838299/216784848-b3a83f06-2691-4785-a65f-eac0cde7da0c.png)
 
-Leave the root directory field blank. By default, Render will run commands from
-the root directory.
 
-Make sure the Environment field is set set to "Python 3", the Region is set to
-the location closest to you, and the Branch is set to "main".
 
-Next, add your Build command. This is a script that should include everything
-that needs to happen _before_ starting the server.
+Once logged in or after signing up, the user has access to the whole site and all of its features.
 
-For your Flask project, enter the following command into the Build field, all in
-one line:
+![Screen Shot 2023-02-04 at 2 01 20 PM](https://user-images.githubusercontent.com/81838299/216784951-e66346c6-dcb9-418e-a240-262faa7cd044.png)
 
-```shell
-# build command - enter all in one line
-npm install --prefix react-app &&
-npm run build --prefix react-app &&
-pip install -r requirements.txt &&
-pip install psycopg2 &&
-flask db upgrade &&
-flask seed all
-```
 
-This script will install dependencies for the frontend, and run the build
-command in the __package.json__ file for the frontend, which builds the React
-application. Then, it will install the dependencies needed for the Python
-backend, and run the migration and seed files.
+A user can click the "Striverr Business" button in the navbar which will open up a modal with required information needed to post the service such as the service's title, description, price, and thumbnail image.
 
-Now, add your start command in the Start field:
+![Screen Shot 2023-02-04 at 2 02 47 PM](https://user-images.githubusercontent.com/81838299/216785004-cc085f91-8741-454e-99ea-d0b70b5c97a5.png)
 
-```shell
-# start script
-gunicorn app:app
-```
 
-_If you are using websockets, use the following start command instead for increased performance:_
+Once submitted the page will navigate the user to that service's details page for the user to see the posted service in full. The user can also navigate to the homepage and see that service among all the other services provided.
 
-`gunicorn --worker-class eventlet -w 1 app:app`
+![Screen Shot 2023-02-04 at 2 03 58 PM](https://user-images.githubusercontent.com/81838299/216785071-3a75253a-9881-40df-9e8f-885d9f4c3bf2.png)
+![Screen Shot 2023-02-04 at 2 04 07 PM](https://user-images.githubusercontent.com/81838299/216785072-b54c9846-dac3-436c-a0fb-84fef2ba5044.png)
+![Screen Shot 2023-02-04 at 2 04 31 PM](https://user-images.githubusercontent.com/81838299/216785076-b56d9a9a-8d15-4dea-95ff-72c635a517af.png)
 
-### Part B: Add the Environment Variables
 
-Click on the "Advanced" button at the bottom of the form to configure the
-environment variables your application needs to access to run properly. In the
-development environment, you have been securing these variables in the __.env__
-file, which has been removed from source control. In this step, you will need to
-input the keys and values for the environment variables you need for production
-into the Render GUI.
+If the user wanted to edit any of the services they posted, they can navigate to their profile page which will have information on the specific user including username, email, and their balance on the site.
+They will also see all the services they provide with edit and delete buttons pertaining to each service.
+The user can click on the edit service button for the service they want to edit which opens up a modal and change whichever fields they would like. The changes go into effect immediately. 
+Also, if the user provides a broken image link, my site will give the service a default image.
 
-Click on "Add Environment Variable" to start adding all of the variables you
-need for the production environment.
+![Screen Shot 2023-02-04 at 2 07 41 PM](https://user-images.githubusercontent.com/81838299/216785402-80fd2393-cdd5-4b96-8859-21463a96c7d5.png)
+![Screen Shot 2023-02-04 at 2 10 50 PM](https://user-images.githubusercontent.com/81838299/216785418-89cb8199-b9e9-4cc0-b358-6b9f9b1935b2.png)
+![Screen Shot 2023-02-04 at 2 11 01 PM](https://user-images.githubusercontent.com/81838299/216785437-437a4af8-1deb-4e4e-8ce1-69a6f11b6db7.png)
+![Screen Shot 2023-02-04 at 2 11 27 PM](https://user-images.githubusercontent.com/81838299/216785556-2774d815-c582-48b9-90ec-e537568ec301.png)
 
-Add the following keys and values in the Render GUI form:
+If the user wanted to delete a service they have posted, they can click the delete service button for that service on their profile page and poof, the service has now been deleted.
 
-- SECRET_KEY (click "Generate" to generate a secure secret for production)
-- FLASK_ENV production
-- FLASK_APP app
-- SCHEMA (your unique schema name, in snake_case)
-- REACT_APP_BASE_URL (use render.com url, located at top of page, similar to
-  https://this-application-name.onrender.com)
+![Screen Shot 2023-02-04 at 2 17 47 PM](https://user-images.githubusercontent.com/81838299/216785698-6cb64e4d-261b-4163-9bcf-4c6d2e469d48.png)
 
-In a new tab, navigate to your dashboard and click on your Postgres database
-instance.
 
-Add the following keys and values:
+A user can browse all the services and find more details by clicking on the respective service.
+If they would like that service provided they can book the service using the form on that service's details page.
+This is dependant on the user not having that service booked currently and also having enough money to purchase the service.
+The user will fill out the intructions input area with details of how specifically they want the service provider to help and then click submit, booking the site.
 
-- DATABASE_URL (copy value from Internal Database URL field)
+![Screen Shot 2023-02-04 at 2 01 35 PM](https://user-images.githubusercontent.com/81838299/216785737-e5cfe4ab-6c19-4993-91d9-c70a080e9c2f.png)
+![Screen Shot 2023-02-04 at 2 21 56 PM](https://user-images.githubusercontent.com/81838299/216785936-2c2f5fb2-d73a-4ebb-9bc3-536ff6d66a85.png)
 
-_Note: Add any other keys and values that may be present in your local __.env__
-file. As you work to further develop your project, you may need to add more
-environment variables to your local __.env__ file. Make sure you add these
-environment variables to the Render GUI as well for the next deployment._
 
-Next, choose "Yes" for the Auto-Deploy field. This will re-deploy your
-application every time you push to main.
 
-Now, you are finally ready to deploy! Click "Create Web Service" to deploy your
-project. The deployment process will likely take about 10-15 minutes if
-everything works as expected. You can monitor the logs to see your build and
-start commands being executed, and see any errors in the build process.
+Once booked the site will navigate the user to the "Orders" page, this page has details on which if any services the user has currently booked. This page also displays the price paid and the instructions given by said user. From this page the user can edit the intructions given to the service provider and/or cancel the service completely.
 
-When deployment is complete, open your deployed site and check to see if you
-successfully deployed your Flask application to Render! You can find the URL for
-your site just below the name of the Web Service at the top of the page.
+![Screen Shot 2023-02-04 at 2 22 21 PM](https://user-images.githubusercontent.com/81838299/216786018-38e05c5b-b7a2-4a3b-9e30-87b9407defde.png)
+![Screen Shot 2023-02-04 at 2 29 43 PM](https://user-images.githubusercontent.com/81838299/216786190-75a9f9e4-cb40-4d27-a80c-aff10faa65ca.png)
 
-[Render.com]: https://render.com/
-[Dashboard]: https://dashboard.render.com/
+![Screen Shot 2023-02-04 at 2 23 35 PM](https://user-images.githubusercontent.com/81838299/216786031-ab13df4d-bf0e-45d9-a588-c5193868fce7.png)
+
+
+----------------------------------------------------------------------------------------------
+
+FUTURE FEATURES
+
+Reviews
+
+A user will be able to see the reviews of a service posted by users who have booked that service including themselves.
+A user will be able to post a review of a service they have booked once the service has been completed and cancelled.
+If they had a change of heart the user can edit their review and also delete their review.
+
+
+User Page
+
+A user will be able to add more to their on-site balance to then purchase services.
+A user will be able to edit their username, email, and bio.

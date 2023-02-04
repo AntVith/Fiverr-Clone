@@ -40,7 +40,7 @@ def seed_services():
     service_18 = Service(
         user_id = 3, title='Learning code for the first time? I will teach you Python to kickstart your learning!' , description='Starting with if statements and for loops to creating a whole application, I will teach you everything you need to know about Python.', price = 544, thumbnail= 'https://www.incimages.com/uploaded_files/image/1920x1080/html-code-on-blackboard_pan_15454.jpg')
     service_19 = Service(
-        user_id = 2, title='Managing a tech company can by difficult, let me help you!' , description='I have built two tech companies from the ground up and have sold both for over $50 million each. Let me help you accomplish the same thing!', price = 999 , thumbnail= 'https://images.propertycasualty360.com/contrib/content/uploads/sites/414/2019/05/02-tech-modernization-Shutterstock.jpeg')
+        user_id = 2, title='Managing a tech company can be difficult, let me help you!' , description='I have built two tech companies from the ground up and have sold both for over $50 million each. Let me help you accomplish the same thing!', price = 999 , thumbnail= 'https://images.propertycasualty360.com/contrib/content/uploads/sites/414/2019/05/02-tech-modernization-Shutterstock.jpeg')
 
 
     db.session.add(service_7)
