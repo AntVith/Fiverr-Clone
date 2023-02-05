@@ -1,4 +1,6 @@
-Welcome to Striverr, a freelance site for all things software engineering, programming, and tech!
+Welcome to Striverr!
+
+A freelance site for all things software engineering, programming, and tech!
 
 A clone of the popular freelance site Fiverr, designed to match its style, layout, and base functionality.
 
@@ -42,7 +44,7 @@ Once submitted the page will navigate the user to that service's details page fo
 
 If the user wanted to edit any of the services they posted, they can navigate to their profile page which will have information on the specific user including username, email, and their balance on the site.
 They will also see all the services they provide with edit and delete buttons pertaining to each service.
-The user can click on the edit service button for the service they want to edit which opens up a modal and change whichever fields they would like. The changes go into effect immediately. 
+The user can click on the edit service button for the service they want to edit which opens up a modal and change whichever fields they would like. The changes go into effect immediately.
 Also, if the user provides a broken image link, my site will give the service a default image.
 
 ![Screen Shot 2023-02-04 at 2 07 41 PM](https://user-images.githubusercontent.com/81838299/216785402-80fd2393-cdd5-4b96-8859-21463a96c7d5.png)
