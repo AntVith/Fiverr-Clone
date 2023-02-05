@@ -11,6 +11,7 @@ function AllServices() {
     const totalServices = services.length
     const [users, setUsers] = useState([]);
     const [currentIndex, setCurrentIndex] = useState(0);
+    const loggedIn = useSelector(state => state.session.user)
     useEffect(() => {
        dispatch(getAllServices())
        async function fetchData() {
@@ -19,7 +20,7 @@ function AllServices() {
         setUsers(responseData.users);
       }
       fetchData();
-    }, [dispatch])
+    }, [dispatch, loggedIn])
 
     const images = ['https://miro.medium.com/max/1400/1*3vOvKvhf_YC5XzU6oFWRhw.png','https://c8.alamy.com/comp/2JGEGD2/app-software-development-abstract-process-with-construction-crane-building-application-team-of-developers-create-web-content-time-management-in-infographic-concept-banner-thin-line-art-design-2JGEGD2.jpg','https://www.freecodecamp.org/news/content/images/2021/01/image-155.png','https://kinsta.com/wp-content/uploads/2021/03/javascript-libraries.png', 'https://www.makewonder.com/wp-content/uploads/sites/4/2021/01/coding-languages-image.jpeg', 'https://res.cloudinary.com/practicaldev/image/fetch/s--YHR2L-mf--/c_imagga_scale,f_auto,fl_progressive,h_900,q_auto,w_1600/https://dev-to-uploads.s3.amazonaws.com/i/68cjjc8ujhz1o6anuq6s.png', 'https://www.indiewire.com/wp-content/uploads/2017/10/matrix-code.jpg', 'https://img.freepik.com/free-vector/program-development-banner-set_1284-34402.jpg']
 
