@@ -5,6 +5,7 @@ import {getServiceDetails} from '../../store/service'
 import { postABooking } from '../../store/booking';
 import {editAUserBalance} from '../../store/session'
 import {getAllServices} from '../../store/service'
+import { getReviews } from '../../store/review';
 import './ServiceDetails.css'
 function ServiceDetails(){
     const {serviceId} = useParams()
@@ -15,10 +16,13 @@ function ServiceDetails(){
     const [instructions, setInstructions] = useState('')
     const [bookings, setBookings] = useState([])
     const sessionUser = useSelector(state => state.session.user);
+    const reviewsObj = useSelector(state => state.reviews.reviews)
+    const reviews = Object.values(reviewsObj)
     const history = useHistory()
 
     useEffect(() => {
         dispatch(getServiceDetails(serviceId))
+        dispatch(getReviews(serviceId))
             async function fetchData() {
             const response = await fetch('/api/users/');
             const responseData = await response.json();
@@ -111,7 +115,7 @@ function ServiceDetails(){
     //         return false
     //     }
     // }
-
+    console.log('reviews', reviews)
     return (
         <div id='whole-details-page'>
         <div id='details-side'>
@@ -132,7 +136,16 @@ function ServiceDetails(){
                 <div id='details-description-info'>{serviceDetails.description}</div>
             </div>
 
+            <div id='reviews-div'>
+                <div id='Reviews-title'>Reviews</div>
+                {reviews.map(review => (
+                    <div className='reviewBlock'>
+                        <div> {review.review} </div>
+                        <div> {review.stars} </div>
+                    </div>
+                ))}
 
+            </div>
 
             <div>
                 <div id='details-user-title'>About The Seller</div>
