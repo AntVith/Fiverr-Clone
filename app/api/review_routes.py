@@ -30,6 +30,26 @@ def post_review():
             "errors": form.errors
         }, 400
 
+#edit a review
+review_routes.route('/<int:review_id>/edit', methods=['PUT'])
+def edit_review(review_id):
+    review = Review.query.get(review_id)
+    print('helloooooooooooooo')
+    print('review ----------',review)
+    form = ReviewForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+
+    if form.validate_on_submit():
+        form.populate_obj(review)
+
+        db.session.add(review)
+        db.session.commit()
+        return review.to_dict(), 200
+    else:
+        return {
+            "errors": form.errors
+        }, 400
+
 #delete a review
 @review_routes.route('/<int:reviewId>', methods=['DELETE'])
 def delete_review(reviewId):
