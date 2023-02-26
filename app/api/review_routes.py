@@ -31,7 +31,7 @@ def post_review():
         }, 400
 
 #edit a review
-review_routes.route('/<int:review_id>/edit', methods=['PUT'])
+@review_routes.route('/<int:review_id>/edit', methods=['PUT'])
 def edit_review(review_id):
     review = Review.query.get(review_id)
     print('helloooooooooooooo')
