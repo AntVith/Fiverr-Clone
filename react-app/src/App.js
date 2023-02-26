@@ -11,6 +11,7 @@ import { authenticate } from './store/session';
 import AllServices from './components/AllServices/'
 import SeviceDetails from './components/ServiceDetails/'
 import UserOrders from './components/Orders';
+import PostReview from './components/PostReview';
 import Footer from './components/Footer/footer';
 
 function App() {
@@ -41,6 +42,9 @@ function App() {
         <ProtectedRoute path='/orders' exact={true}>
           <UserOrders />
         </ProtectedRoute>
+        <Route path='/review/:serviceId' exact={true}>
+          <PostReview />
+        </Route>
         <Route path='/login' exact={true}>
           <LoginForm />
         </Route>

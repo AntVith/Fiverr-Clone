@@ -1,7 +1,8 @@
 const GET_REVIEWS = 'reviews/GET_REVIEWS'
-// const POST_REVIEW = 'reviews/POST_REVIEW'
+const POST_REVIEW = 'reviews/POST_REVIEW'
 // const DELETE_REVIEW ='reviews/DELETE_REVIEW'
 // const EDIT_REVIEW = 'reviews/EDIT_REVIEW'
+
 
 
 const get_reviews = (data) => ({
@@ -21,6 +22,19 @@ export const getReviews = (id) => async (dispatch) => {
         dispatch(get_reviews(data))
     } else{
         console.log('error')
+    }
+}
+export const postReview = (formData) => async (dispatch) => {
+    const response = await fetch('/api/review/new', {
+        method:'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData)
+    })
+
+    if(response.ok){
+        console.log('success')
+        const newReview = await response.json()
+        return newReview
     }
 }
 
