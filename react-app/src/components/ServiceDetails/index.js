@@ -140,7 +140,7 @@ function ServiceDetails(){
                 <div id='Reviews-title'>Reviews</div>
                 {reviews.map(review => (
                     <div className='reviewBlock'>
-                        <div> {review.review} </div>
+                        <div id='review-comment'> {review.review} </div>
                         <div> {review.stars} </div>
                     </div>
                 ))}
