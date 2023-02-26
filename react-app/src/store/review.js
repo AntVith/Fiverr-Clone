@@ -1,6 +1,6 @@
 const GET_REVIEWS = 'reviews/GET_REVIEWS'
-const POST_REVIEW = 'reviews/POST_REVIEW'
-// const DELETE_REVIEW ='reviews/DELETE_REVIEW'
+// const POST_REVIEW = 'reviews/POST_REVIEW'
+const DELETE_REVIEW ='reviews/DELETE_REVIEW'
 // const EDIT_REVIEW = 'reviews/EDIT_REVIEW'
 
 
@@ -9,6 +9,23 @@ const get_reviews = (data) => ({
     type:GET_REVIEWS,
     data
 })
+
+const delete_review = (id) => ({
+    type: DELETE_REVIEW,
+    id
+})
+
+export const deleteReview = (id) => async (dispatch) => {
+    const response = await fetch(`/api/review/${id}`, {
+        method: 'DELETE'
+    })
+
+    if(response.ok){
+        const message = await response.json()
+        dispatch(delete_review(id))
+        return message
+    }
+}
 
 export const getReviews = (id) => async (dispatch) => {
     const response = await fetch(`/api/review/service/${id}`)
@@ -49,6 +66,13 @@ const reviewReducer = (state = initialState, action) => {
             action.data.reviews.forEach(review => {
                 newState.reviews[review.id] = review
             })
+            return newState
+        }
+        case DELETE_REVIEW:{
+            const newState = {...state}
+            const newReviews = {...state.reviews}
+            delete newReviews[action.id]
+            newState.reviews = newReviews
             return newState
         }
         default:

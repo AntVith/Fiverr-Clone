@@ -6,6 +6,7 @@ import { postABooking } from '../../store/booking';
 import {editAUserBalance} from '../../store/session'
 import {getAllServices} from '../../store/service'
 import { getReviews } from '../../store/review';
+import { deleteReview } from '../../store/review';
 import './ServiceDetails.css'
 function ServiceDetails(){
     const {serviceId} = useParams()
@@ -63,6 +64,15 @@ function ServiceDetails(){
         }
     }
 
+    const handleDeletion = async (reviewId) => {
+        const deletedReview = await dispatch(deleteReview(reviewId))
+
+        if(deletedReview){
+            alert('Deleted Successfully!')
+            history.push(`/services/${serviceId}`)
+        }
+    }
+
     function userNameFinder(id) {
         const usersFound = users.filter(user => user.id === id)
         const usernameFound = usersFound[0].username
@@ -107,15 +117,14 @@ function ServiceDetails(){
                >Order</button>
         }
     }
-    // function enoughMoney(){
-    //     console.log('in money',(sessionUser.balance - serviceDetails.price) )
-    //     if((sessionUser.balance - serviceDetails.price) >0){
-    //         return true
-    //     } else{
-    //         return false
-    //     }
-    // }
-    console.log('reviews', reviews)
+    function userReview(userId){
+        if(sessionUser && sessionUser.id === userId){
+            return true
+        } else{
+            return false
+        }
+    }
+
     return (
         <div id='whole-details-page'>
         <div id='details-side'>
@@ -142,6 +151,11 @@ function ServiceDetails(){
                     <div className='reviewBlock'>
                         <div id='review-comment'> {review.review} </div>
                         <div> {review.stars} </div>
+                        {userReview(review.user_id) &&
+                         <div>
+                             <button>Edit</button>
+                             <button onClick={() => handleDeletion(review.id)}>Delete</button>
+                         </div>}
                     </div>
                 ))}
 

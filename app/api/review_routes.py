@@ -29,3 +29,13 @@ def post_review():
         return {
             "errors": form.errors
         }, 400
+
+#delete a review
+@review_routes.route('/<int:reviewId>', methods=['DELETE'])
+def delete_review(reviewId):
+    review = Review.query.get(reviewId)
+
+    db.session.delete(review)
+    db.session.commit()
+
+    return {"message": 'successfully deleted'}, 200
