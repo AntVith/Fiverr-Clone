@@ -11,9 +11,12 @@ function EditReview({reviewId, serviceId}){
     const {closeModal} = useModal();
 
     const sessionUser = useSelector(state => state.session.user);
-
-    const [review, setReview] = useState('')
-    const [stars, setStars] = useState(5)
+    const reviewsObj = useSelector(state => state.reviews.reviews)
+    const reviewToEdit = reviewsObj[reviewId]
+    console.log(reviewsObj)
+    console.log(reviewToEdit)
+    const [review, setReview] = useState(reviewToEdit.review)
+    const [stars, setStars] = useState(reviewToEdit.stars)
 
     const handleSubmit = async(e) => {
         e.preventDefault()
