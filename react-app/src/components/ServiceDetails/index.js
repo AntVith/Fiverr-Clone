@@ -152,9 +152,9 @@ function ServiceDetails(){
                 {reviews.map(review => (
                     <div className='reviewBlock'>
                         <div id='review-comment'> {review.review} </div>
-                        <div> {review.stars} </div>
+                        <div id='review-stars'> {review.stars} </div>
                         {userReview(review.user_id) &&
-                         <div>
+                         <div id='review-buttons'>
                              <OpenModalButton
                                 buttonText='Edit'
                                 modalComponent={<EditReview
@@ -162,7 +162,7 @@ function ServiceDetails(){
                                      serviceId={serviceId}
                                 />}
                                 />
-                             <button onClick={() => handleDeletion(review.id)}>Delete</button>
+                             <button id='delete-review-button' onClick={() => handleDeletion(review.id)}>Delete</button>
                          </div>}
                     </div>
                 ))}

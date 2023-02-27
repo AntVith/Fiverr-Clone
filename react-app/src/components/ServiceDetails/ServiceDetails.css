@@ -57,14 +57,48 @@
 .reviewBlock{
     display: flex;
     flex-direction: row;
-    justify-content: space-evenly;
+    /* justify-content: space-evenly; */
     margin-top: 2%;
-    border: 1px solid lightgray
+    border-top: 1px solid lightgray;
 }
 #review-comment{
     padding-right: 2%;
     border-right: 1px solid lightgray;
+    width:45%;
+    height:60px;
+    overflow: scroll;
+    align-self: center;
+    padding-top: 1%;
+    /* margin-right: 5%; */
 }
+#review-stars{
+    width:45%;
+    align-self: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    /* border-right: 1px solid lightgray; */
+    /* padding-left: 5%; */
+}
+#review-buttons{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+button.Edit{
+    background-color: white;
+    color:#1dbf73;
+    font-weight: bold;
+    border: 2px solid #1dbf73;;;
+}
+
+#delete-review-button{
+    background-color: white;
+    color: darkslategray;
+    border: 2px solid darkslategray;
+    font-weight: bold;
+}
+
 
 #details-user-title{
     margin-top: 30px;
