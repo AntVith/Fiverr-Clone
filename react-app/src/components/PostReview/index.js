@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {useHistory, useParams } from 'react-router-dom';
 import {postReview} from '../../store/review'
-
+import './PostReview.css'
 function PostReview(){
     const dispatch = useDispatch()
     const history = useHistory()
@@ -34,11 +34,11 @@ function PostReview(){
     return (
         <div id='PostReviewContainer'>
             <form id='post-review' onSubmit={handleSubmit} method='post'>
-                <h2 id='review-title'>Striverr prides itself on reliability and upholding a certain standard of service.</h2>
-                 <h2>We want your feedback on your booking experience!</h2>
+                <h1 className='review-title'>Striverr prides itself on reliability.</h1>
+                 <h2 className='review-title'>We want your feedback on your booking experience!</h2>
 
                     <div id='review-comment-input'>
-                     <label className='post-labels'>How was your experience with this booking?</label>
+                     <label className='post-labels' id='review-comment-input-title'>How was your experience with this booking?</label>
                      <textarea
                         type='text'
                         required
@@ -55,7 +55,8 @@ function PostReview(){
                      name='stars'
                      className='Post-Service-Inputs'
                      onChange={(e) => setStars(e.target.value)}
-                     value={stars}>
+                     value={stars}
+                     id='star-select'>
                         <option value='1' >1</option>
                         <option value='2' >2</option>
                         <option value='3' >3</option>
@@ -64,7 +65,7 @@ function PostReview(){
                     </select>
                 </div>
                 <button  id='post-review-button' type='submit'>Submit Review</button>
-                <button onClick={() => history.push('/orders')}>Skip</button>
+                <button  id='skip-review-button' onClick={() => history.push('/orders')}>Skip</button>
 
             </form>
         </div>
