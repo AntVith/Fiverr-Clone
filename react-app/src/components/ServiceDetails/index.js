@@ -9,7 +9,12 @@ import { getReviews } from '../../store/review';
 import { deleteReview } from '../../store/review';
 import OpenModalButton from '../OpenModalButton'
 import EditReview from '../EditReviewModal';
+
+import {DynamicStar} from 'react-dynamic-star'
+
 import './ServiceDetails.css'
+
+
 function ServiceDetails(){
     const {serviceId} = useParams()
     const dispatch = useDispatch()
@@ -22,6 +27,18 @@ function ServiceDetails(){
     const reviewsObj = useSelector(state => state.reviews.reviews)
     const reviews = Object.values(reviewsObj)
     const history = useHistory()
+
+    const [star, setStar] = useState({
+        rating: 2,
+        totalStars: 5,
+        sharpness: 2.5,
+        width: 30,
+        height: 30,
+        outlined: true,
+        outlinedColor: "",
+        fullStarColor: "#FFBC00",
+        emptyStarColor: "transparent"
+      });
 
     useEffect(() => {
         dispatch(getServiceDetails(serviceId))
@@ -152,7 +169,18 @@ function ServiceDetails(){
                 {reviews.map(review => (
                     <div className='reviewBlock'>
                         <div id='review-comment'> {review.review} </div>
-                        <div id='review-stars'> {review.stars} </div>
+                        <div id='review-stars'>
+                         <DynamicStar
+                         rating={review.stars}
+                         width={parseFloat(star.width)}
+                        height={parseFloat(star.height)}
+                        outlined={star.outlinedColor ? star.outlinedColor : star.outlined}
+                        totalStars={star.totalStars}
+                        sharpnessStar={star.sharpness}
+                        fullStarColor={star.fullStarColor}
+                        emptyStarColor={star.emptyStarColor}
+                         />
+                           </div>
                         {userReview(review.user_id) &&
                          <div id='review-buttons'>
                              <OpenModalButton

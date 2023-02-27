@@ -58,8 +58,10 @@
     display: flex;
     flex-direction: row;
     /* justify-content: space-evenly; */
-    margin-top: 2%;
+    margin-top: 1%;
+    margin-bottom: 1%;
     border-top: 1px solid lightgray;
+    /* align-items: center; */
 }
 #review-comment{
     padding-right: 2%;
@@ -68,7 +70,7 @@
     height:60px;
     overflow: scroll;
     align-self: center;
-    padding-top: 1%;
+    padding-top: 2%;
     /* margin-right: 5%; */
 }
 #review-stars{
@@ -80,6 +82,9 @@
     /* border-right: 1px solid lightgray; */
     /* padding-left: 5%; */
 }
+#visual-star-rating{
+    height:20px
+}
 #review-buttons{
     display: flex;
     flex-direction: column;
@@ -90,6 +95,7 @@ button.Edit{
     color:#1dbf73;
     font-weight: bold;
     border: 2px solid #1dbf73;;;
+    margin-top: 10%;
 }
 
 #delete-review-button{
@@ -97,6 +103,7 @@ button.Edit{
     color: darkslategray;
     border: 2px solid darkslategray;
     font-weight: bold;
+    /* margin-top: 0%; */
 }
 
 
