@@ -183,13 +183,15 @@ function ServiceDetails(){
                            </div>
                         {userReview(review.user_id) &&
                          <div id='review-buttons'>
+                            <div id='edit-review-button'>
                              <OpenModalButton
-                                buttonText='Edit'
+                                buttonText='Edit Review'
                                 modalComponent={<EditReview
                                      reviewId={review.id}
                                      serviceId={serviceId}
                                 />}
                                 />
+                                </div>
                              <button id='delete-review-button' onClick={() => handleDeletion(review.id)}>Delete</button>
                          </div>}
                     </div>
