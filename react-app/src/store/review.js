@@ -1,7 +1,7 @@
 const GET_REVIEWS = 'reviews/GET_REVIEWS'
 // const POST_REVIEW = 'reviews/POST_REVIEW'
 const DELETE_REVIEW ='reviews/DELETE_REVIEW'
-// const EDIT_REVIEW = 'reviews/EDIT_REVIEW'
+const EDIT_REVIEW = 'reviews/EDIT_REVIEW'
 
 
 
@@ -14,6 +14,25 @@ const delete_review = (id) => ({
     type: DELETE_REVIEW,
     id
 })
+
+const edit_review = (data) => ({
+    type:EDIT_REVIEW,
+    data
+})
+
+export const editReview = (id, formData) => async (dispatch) => {
+    const response = await fetch(`/api/review/${id}/edit`, {
+        method:'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData)
+    })
+
+    if(response.ok){
+        const data = await response.json()
+        dispatch(edit_review(data))
+        return data
+    }
+}
 
 export const deleteReview = (id) => async (dispatch) => {
     const response = await fetch(`/api/review/${id}`, {
@@ -31,7 +50,7 @@ export const getReviews = (id) => async (dispatch) => {
     const response = await fetch(`/api/review/service/${id}`)
 
     if(response.ok){
-        console.log('thunk')
+        // console.log('thunk')
         const data = await response.json()
         if(data.errors){
             return
@@ -72,6 +91,13 @@ const reviewReducer = (state = initialState, action) => {
             const newState = {...state}
             const newReviews = {...state.reviews}
             delete newReviews[action.id]
+            newState.reviews = newReviews
+            return newState
+        }
+        case EDIT_REVIEW:{
+            const newState = {...state}
+            const newReviews = {...state.reviews}
+            newReviews[action.data.id] = action.data
             newState.reviews = newReviews
             return newState
         }

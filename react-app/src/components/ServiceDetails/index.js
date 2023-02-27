@@ -7,6 +7,8 @@ import {editAUserBalance} from '../../store/session'
 import {getAllServices} from '../../store/service'
 import { getReviews } from '../../store/review';
 import { deleteReview } from '../../store/review';
+import OpenModalButton from '../OpenModalButton'
+import EditReview from '../EditReviewModal';
 import './ServiceDetails.css'
 function ServiceDetails(){
     const {serviceId} = useParams()
@@ -153,7 +155,13 @@ function ServiceDetails(){
                         <div> {review.stars} </div>
                         {userReview(review.user_id) &&
                          <div>
-                             <button>Edit</button>
+                             <OpenModalButton
+                                buttonText='Edit'
+                                modalComponent={<EditReview
+                                     reviewId={review.id}
+                                     serviceId={serviceId}
+                                />}
+                                />
                              <button onClick={() => handleDeletion(review.id)}>Delete</button>
                          </div>}
                     </div>
