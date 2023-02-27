@@ -4,6 +4,7 @@ import { useHistory, useParams } from "react-router-dom";
 import { useModal } from "../../context/Modal";
 import { useSelector } from "react-redux";
 import { editReview } from "../../store/review";
+import './EditReview.css'
 
 function EditReview({reviewId, serviceId}){
     const dispatch = useDispatch()
@@ -42,10 +43,10 @@ function EditReview({reviewId, serviceId}){
 
     return (
         <div id='edit-booking-container'>
-        <form id= 'edit-booking-form' onSubmit={handleSubmit}>
-            <h2 id='edit-booking-title'>Update Review</h2>
+        <form id= 'edit-review-form' onSubmit={handleSubmit}>
+            <h2 id='edit-review-title'>Update Review</h2>
 
-            <div id='instructions-edit-booking'>
+            <div className='review-edit-field'>
                 <label id="edit-booking-label">Comment</label>
               <textarea
                 type='text'
@@ -56,7 +57,7 @@ function EditReview({reviewId, serviceId}){
                 id= 'edit-booking-form-input'
               />
               </div>
-              <div id='instructions-edit-booking'>
+              <div className='review-edit-field'>
                 <label id="edit-booking-label">Star Rating</label>
               <select
                 required
