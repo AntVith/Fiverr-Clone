@@ -33,6 +33,20 @@ export const editAUserBalance = (newBalance, userId) => async (dispatch) =>{
     return user
   }
 }
+export const addToUserBalance = (newBalance, userId) => async (dispatch) =>{
+  const response = await fetch(`/api/users/${userId}/add`, {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(newBalance)
+  })
+  if (response.ok){
+    const user = await response.json()
+    dispatch(editUserBalance(user))
+    return user
+  }
+}
 
 export const authenticate = () => async (dispatch) => {
   const response = await fetch('/api/auth/', {

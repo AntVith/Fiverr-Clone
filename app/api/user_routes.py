@@ -29,6 +29,23 @@ def edit_user(id):
         db.session.commit()
         return user_info.to_dict(), 200
 
+# add to balance of user
+@user_routes.route('/<int:id>/add', methods=['PUT'])
+def add_to_user_balance(id):
+    user_info = User.query.get(id)
+    form = BalanceForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+
+    if form.validate_on_submit:
+
+        prev_balance = user_info.balance
+        form.populate_obj(user_info)
+        user_info.balance += prev_balance
+
+        db.session.add(user_info)
+        db.session.commit()
+        return user_info.to_dict(), 200
+
 
 
 @user_routes.route('/<int:id>')

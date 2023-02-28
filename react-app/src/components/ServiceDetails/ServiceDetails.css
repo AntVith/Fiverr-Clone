@@ -98,6 +98,9 @@ button.Edit.Review{
     margin-top: 10%;
     height:20px;
 }
+button.Edit.Review:hover{
+    background-color: #e4e5e7;
+}
 
 #delete-review-button{
     background-color: white;
@@ -106,6 +109,9 @@ button.Edit.Review{
     font-weight: bold;
     /* margin-top: 0%; */
     height:20px;
+}
+#delete-review-button:hover{
+    background-color: #e4e5e7;
 }
 
 
