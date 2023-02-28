@@ -103,6 +103,7 @@ function EditBalanceModal(userId){
                 value={cardType}
                 name="balance"
                 className= 'edit-balance-form-input'
+                id='card-type-select'
               >
                 <option value='Visa'>Visa</option>
                 <option value='MasterCard'>MasterCard</option>

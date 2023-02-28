@@ -31,6 +31,10 @@
     margin-bottom: 2%;
     width:100%
 }
+#card-type-select{
+    width:102%;
+    height: 40px
+}
 .balance-form-date-inputs{
     display: flex;
     flex-direction: column;
@@ -38,10 +42,7 @@
     width:100%;
     margin-left: 5%;
 }
-select.edit-balance-form-inputs{
-    height: 30px;
-    width:140%
-}
+
 .post-labels{
     font-size: 17px;
 }
