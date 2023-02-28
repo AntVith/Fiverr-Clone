@@ -5,18 +5,21 @@ import EditService from './EditServiceModal/'
 import OpenModalButton from './OpenModalButton'
 import { deleteAService } from '../store/service';
 import {getAllServices} from '../store/service'
+import EditBalanceModal from './EditBalanceModal';
 import './User.css'
 
 function User() {
   const [user, setUser] = useState({});
   const { userId }  = useParams();
+
   const allServicesObj = useSelector(state => state.services.allServices)
   const allServices = Object.values(allServicesObj)
   const sessionUserObj = useSelector(state => state.session.user)
   const sessionUser = Object.values(sessionUserObj)
-  // console.log('user', user)
+
   const history = useHistory()
   const dispatch = useDispatch()
+  const userBalance = sessionUserObj.balance
 
 
   useEffect(() => {
@@ -28,10 +31,11 @@ function User() {
       const user = await response.json();
       setUser(user);
     })();
-  }, [userId]);
+  }, [userId, userBalance]);
+
   useEffect(() => {
     dispatch(getAllServices())
-}, [dispatch])
+  }, [dispatch, userBalance])
 
   if (!user) {
     return null;
@@ -43,7 +47,7 @@ function User() {
     return null
   }
   const userServices = allServices.filter(service => service.user_id === Number(userId))
-  console.log('user', userServices)
+  // console.log('user', userServices)
 
   let message = ''
   const handleDeletion = async (serviceId) => {
@@ -75,6 +79,11 @@ function User() {
               Balance:  ${user.balance}
             </div>
           </div>
+          <OpenModalButton
+          id='edit-balance-button'
+          buttonText = 'Add to Balance'
+          modalComponent={<EditBalanceModal userId={userId} />}
+          />
       </div>
       <div id='all-services-profile-page'>
         <div id='service-title-profile-page'>Services you provide</div>
