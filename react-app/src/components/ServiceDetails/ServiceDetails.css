@@ -42,7 +42,7 @@
 #details-description{
     margin-top: 30px;
 }
-#Details-description-title, #details-user-title{
+#Details-description-title, #details-user-title, #Reviews-title{
     font-size: 20px;
     font-weight: 700;
     color:#404145;
@@ -50,6 +50,65 @@
 #details-description-info{
     margin-top: 20px;
 }
+#reviews-div{
+    margin-top: 30px;
+}
+
+.reviewBlock{
+    display: flex;
+    flex-direction: row;
+    /* justify-content: space-evenly; */
+    margin-top: 1%;
+    margin-bottom: 1%;
+    border-top: 1px solid lightgray;
+    /* align-items: center; */
+}
+#review-comment{
+    padding-right: 2%;
+    border-right: 1px solid lightgray;
+    width:43%;
+    height:60px;
+    overflow: scroll;
+    align-self: center;
+    padding-top: 2%;
+    /* margin-right: 5%; */
+}
+#review-stars{
+    width:43%;
+    align-self: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    /* border-right: 1px solid lightgray; */
+    /* padding-left: 5%; */
+}
+#visual-star-rating{
+    height:20px
+}
+#review-buttons{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+button.Edit.Review{
+    background-color: white;
+    color:#1dbf73;
+    font-weight: bold;
+    border: 2px solid #1dbf73;;;
+    margin-top: 10%;
+    height:20px;
+}
+
+#delete-review-button{
+    background-color: white;
+    color: darkslategray;
+    border: 2px solid darkslategray;
+    font-weight: bold;
+    /* margin-top: 0%; */
+    height:20px;
+}
+
+
 #details-user-title{
     margin-top: 30px;
 }

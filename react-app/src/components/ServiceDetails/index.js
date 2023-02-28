@@ -5,7 +5,16 @@ import {getServiceDetails} from '../../store/service'
 import { postABooking } from '../../store/booking';
 import {editAUserBalance} from '../../store/session'
 import {getAllServices} from '../../store/service'
+import { getReviews } from '../../store/review';
+import { deleteReview } from '../../store/review';
+import OpenModalButton from '../OpenModalButton'
+import EditReview from '../EditReviewModal';
+
+import {DynamicStar} from 'react-dynamic-star'
+
 import './ServiceDetails.css'
+
+
 function ServiceDetails(){
     const {serviceId} = useParams()
     const dispatch = useDispatch()
@@ -15,10 +24,25 @@ function ServiceDetails(){
     const [instructions, setInstructions] = useState('')
     const [bookings, setBookings] = useState([])
     const sessionUser = useSelector(state => state.session.user);
+    const reviewsObj = useSelector(state => state.reviews.reviews)
+    const reviews = Object.values(reviewsObj)
     const history = useHistory()
+
+    const [star, setStar] = useState({
+        rating: 2,
+        totalStars: 5,
+        sharpness: 2.5,
+        width: 30,
+        height: 30,
+        outlined: true,
+        outlinedColor: "",
+        fullStarColor: "#FFBC00",
+        emptyStarColor: "transparent"
+      });
 
     useEffect(() => {
         dispatch(getServiceDetails(serviceId))
+        dispatch(getReviews(serviceId))
             async function fetchData() {
             const response = await fetch('/api/users/');
             const responseData = await response.json();
@@ -56,6 +80,15 @@ function ServiceDetails(){
             }
             const adjustedBalance = await dispatch(editAUserBalance(newBalance, userId))
             history.push(`/orders`)
+        }
+    }
+
+    const handleDeletion = async (reviewId) => {
+        const deletedReview = await dispatch(deleteReview(reviewId))
+
+        if(deletedReview){
+            alert('Deleted Successfully!')
+            history.push(`/services/${serviceId}`)
         }
     }
 
@@ -103,14 +136,13 @@ function ServiceDetails(){
                >Order</button>
         }
     }
-    // function enoughMoney(){
-    //     console.log('in money',(sessionUser.balance - serviceDetails.price) )
-    //     if((sessionUser.balance - serviceDetails.price) >0){
-    //         return true
-    //     } else{
-    //         return false
-    //     }
-    // }
+    function userReview(userId){
+        if(sessionUser && sessionUser.id === userId){
+            return true
+        } else{
+            return false
+        }
+    }
 
     return (
         <div id='whole-details-page'>
@@ -132,7 +164,40 @@ function ServiceDetails(){
                 <div id='details-description-info'>{serviceDetails.description}</div>
             </div>
 
+            <div id='reviews-div'>
+                <div id='Reviews-title'>Reviews</div>
+                {reviews.map(review => (
+                    <div className='reviewBlock'>
+                        <div id='review-comment'> {review.review} </div>
+                        <div id='review-stars'>
+                         <DynamicStar
+                         rating={review.stars}
+                         width={parseFloat(star.width)}
+                        height={parseFloat(star.height)}
+                        outlined={star.outlinedColor ? star.outlinedColor : star.outlined}
+                        totalStars={star.totalStars}
+                        sharpnessStar={star.sharpness}
+                        fullStarColor={star.fullStarColor}
+                        emptyStarColor={star.emptyStarColor}
+                         />
+                           </div>
+                        {userReview(review.user_id) &&
+                         <div id='review-buttons'>
+                            <div id='edit-review-button'>
+                             <OpenModalButton
+                                buttonText='Edit Review'
+                                modalComponent={<EditReview
+                                     reviewId={review.id}
+                                     serviceId={serviceId}
+                                />}
+                                />
+                                </div>
+                             <button id='delete-review-button' onClick={() => handleDeletion(review.id)}>Delete</button>
+                         </div>}
+                    </div>
+                ))}
 
+            </div>
 
             <div>
                 <div id='details-user-title'>About The Seller</div>

@@ -17,12 +17,12 @@ const Footer = () => {
               <div id='dev-name'>Anthony Vithayathil</div>
 
                 <a
-                href='https://github.com/AntVith'>
+                href='https://github.com/AntVith' target="_blank">
                 <img src={gitHubCat}  id='github-cat-logo'/>
                 </a>
 
                 <a
-                href='https://www.linkedin.com/in/anthony-vithayathil-2256bb136/'>
+                href='https://www.linkedin.com/in/anthony-vithayathil-2256bb136/' target="_blank">
                 <img src={linkedInLogo} id='linked-in-logo'/>
                 </a>
 

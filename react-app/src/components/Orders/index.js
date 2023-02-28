@@ -28,7 +28,7 @@ function UserOrders(){
 
 
     let message = ''
-    const handleDeletion = async (bookingId) => {
+    const handleDeletion = async (bookingId, serviceId) => {
 
 
         const deletedBooking = await dispatch(deleteABooking(bookingId))
@@ -36,7 +36,7 @@ function UserOrders(){
         if(deletedBooking){
             message = deletedBooking.message
         }
-        history.push('/orders')
+        history.push(`/review/${serviceId}`)
 
 
     }
@@ -98,7 +98,7 @@ function UserOrders(){
 
                 modalComponent={<EditBookingModal bookingId={`${booking.id}`} />}
                 />
-                <button onClick={ () => handleDeletion(booking.id)} id='cancel-service-button'> Cancel Service</button>
+                <button onClick={ () => handleDeletion(booking.id, booking.service_id)} id='cancel-service-button'> Cancel Service</button>
                 </div>
                 </div>
             ))}
