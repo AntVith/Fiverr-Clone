@@ -1,6 +1,6 @@
 
-import React from 'react';
-import { NavLink } from 'react-router-dom';
+import React, {useState} from 'react';
+import { NavLink, useHistory } from 'react-router-dom';
 import {useSelector} from 'react-redux'
 import LogoutButton from './auth/LogoutButton';
 import OpenModalButton from './OpenModalButton'
@@ -12,6 +12,15 @@ import './NavBar.css'
 const NavBar = () => {
   const sessionUser = useSelector(state => state.session.user);
 
+  const [searchInput, setSearchInput] = useState('')
+  // const history = useHistory()
+
+  function validSearch (e){
+    if(!searchInput.length) e.preventDefault()
+    else setSearchInput('')
+  }
+
+
   let sessionLinks;
 
   if(sessionUser){
@@ -19,6 +28,7 @@ const NavBar = () => {
     <>
     <nav className='navbar'>
       <div id='navbar-contents'>
+        <div className='left-side-contents'>
         <div id='whole-title' >
           <NavLink
            to='/' exact={true} activeClassName='active'
@@ -28,6 +38,28 @@ const NavBar = () => {
           <div id='title-period'>.</div>
           </NavLink>
 
+        </div>
+        <div></div>
+        <div id='search-div'>
+          <input
+          type='text'
+          placeholder='What service are you looking for today?'
+          required
+          onChange={(e) => setSearchInput(e.target.value)}
+          value={searchInput}
+          className='NavBar-Search-Input'
+          />
+          <div id='search-button-div'>
+          <NavLink
+          to={`/search/${searchInput}`}
+          onClick={validSearch}
+          style={{ textDecoration: 'none' }}
+          id='search-navlink'
+          >
+          <img  id='search-icon-img' src='https://www.shutterstock.com/image-vector/search-icon-isolated-on-black-600w-608298485.jpg'></img>
+          </NavLink>
+          </div>
+        </div>
         </div>
         <div className='right-side-contents'>
 
@@ -67,7 +99,8 @@ const NavBar = () => {
     sessionLinks = (
       <>
     <nav className='navbar'>
-      <div id='navbar-contents'>
+      <div id='navbar-loggedOut-contents'>
+      <div className='left-side-loggedOut-contents'>
       <div id='whole-title' >
           <NavLink
            to='/' exact={true} activeClassName='active'
@@ -77,6 +110,28 @@ const NavBar = () => {
           <div id='title-period'>.</div>
           </NavLink>
 
+        </div>
+        <div></div>
+        <div id='search-div'>
+          <input
+          type='text'
+          placeholder='What service are you looking for today?'
+          required
+          onChange={(e) => setSearchInput(e.target.value)}
+          value={searchInput}
+          className='NavBar-Search-Input'
+          />
+          <div id='search-button-div'>
+          <NavLink
+          to={`/search/${searchInput}`}
+          onClick={validSearch}
+          style={{ textDecoration: 'none' }}
+          id='search-navlink'
+          >
+          <img  id='search-icon-img-loggedOut' src='https://www.shutterstock.com/image-vector/search-icon-isolated-on-black-600w-608298485.jpg'></img>
+          </NavLink>
+          </div>
+        </div>
         </div>
         <div className='right-side-contents-logged-out'>
         <div >

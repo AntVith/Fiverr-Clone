@@ -143,6 +143,50 @@ function ServiceDetails(){
             return false
         }
     }
+    function hasReviews (){
+        if(reviews.length){
+         return <div id='reviews-div'>
+         <div id='Reviews-title'>Reviews</div>
+         {reviews.map(review => (
+             <div className='reviewBlock'>
+                 <div id='review-comment'> {review.review} </div>
+                 <div id='review-stars'>
+                  <DynamicStar
+                  rating={review.stars}
+                  width={parseFloat(star.width)}
+                 height={parseFloat(star.height)}
+                 outlined={star.outlinedColor ? star.outlinedColor : star.outlined}
+                 totalStars={star.totalStars}
+                 sharpnessStar={star.sharpness}
+                 fullStarColor={star.fullStarColor}
+                 emptyStarColor={star.emptyStarColor}
+                  />
+                    </div>
+                 {userReview(review.user_id) &&
+                  <div id='review-buttons'>
+                     <div id='edit-review-button'>
+                      <OpenModalButton
+                         buttonText='Edit Review'
+                         modalComponent={<EditReview
+                              reviewId={review.id}
+                              serviceId={serviceId}
+                         />}
+                         />
+                         </div>
+                      <button id='delete-review-button' onClick={() => handleDeletion(review.id)}>Delete</button>
+                  </div>}
+             </div>
+            ))}
+
+            </div>
+        }
+        else {
+            return <div id='reviews-div'>
+            <div id='Reviews-title'>Reviews</div>
+            <div id='no-review-line'>No reviews yet!</div>
+            </div>
+        }
+    }
 
     return (
         <div id='whole-details-page'>
@@ -164,40 +208,7 @@ function ServiceDetails(){
                 <div id='details-description-info'>{serviceDetails.description}</div>
             </div>
 
-            <div id='reviews-div'>
-                <div id='Reviews-title'>Reviews</div>
-                {reviews.map(review => (
-                    <div className='reviewBlock'>
-                        <div id='review-comment'> {review.review} </div>
-                        <div id='review-stars'>
-                         <DynamicStar
-                         rating={review.stars}
-                         width={parseFloat(star.width)}
-                        height={parseFloat(star.height)}
-                        outlined={star.outlinedColor ? star.outlinedColor : star.outlined}
-                        totalStars={star.totalStars}
-                        sharpnessStar={star.sharpness}
-                        fullStarColor={star.fullStarColor}
-                        emptyStarColor={star.emptyStarColor}
-                         />
-                           </div>
-                        {userReview(review.user_id) &&
-                         <div id='review-buttons'>
-                            <div id='edit-review-button'>
-                             <OpenModalButton
-                                buttonText='Edit Review'
-                                modalComponent={<EditReview
-                                     reviewId={review.id}
-                                     serviceId={serviceId}
-                                />}
-                                />
-                                </div>
-                             <button id='delete-review-button' onClick={() => handleDeletion(review.id)}>Delete</button>
-                         </div>}
-                    </div>
-                ))}
-
-            </div>
+        {hasReviews()}
 
             <div>
                 <div id='details-user-title'>About The Seller</div>

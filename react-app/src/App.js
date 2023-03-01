@@ -12,6 +12,7 @@ import AllServices from './components/AllServices/'
 import SeviceDetails from './components/ServiceDetails/'
 import UserOrders from './components/Orders';
 import PostReview from './components/PostReview';
+import SearchResults from './components/SearchResults';
 import Footer from './components/Footer/footer';
 
 function App() {
@@ -44,6 +45,9 @@ function App() {
         </ProtectedRoute>
         <Route path='/review/:serviceId' exact={true}>
           <PostReview />
+        </Route>
+        <Route path='/search/:input' exact={true}>
+          <SearchResults />
         </Route>
         <Route path='/login' exact={true}>
           <LoginForm />

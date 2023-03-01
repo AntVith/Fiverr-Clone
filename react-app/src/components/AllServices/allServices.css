@@ -37,6 +37,24 @@
     /* padding-left: 2%; */
     /* justify-content: space-evenly; */
 }
+#nothing-found-messages{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font: 400 16px/24px "Macan","Helvetica Neue",Helvetica,Arial,sans-serif;
+    margin-left: 2%;
+    /* margin-right: 5%; */
+}
+#nothing-found{
+    font-weight: 500;
+    font-size: 1.75rem;
+
+}
+#recommendation-message{
+    margin-bottom: 10%;
+    font-weight: 450;
+    font-size: 1.5rem;
+}
 
 #service-details{
     display: flex;
