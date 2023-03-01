@@ -19,7 +19,7 @@
     display: flex;
     flex-direction: row;
     margin: 0 5% 0 5%;
-    justify-content: space-between;
+    justify-content: space-evenly;
     /* changed above to space between to have layout like before */
     margin-bottom: 30px;
     padding-bottom: 10px;
@@ -31,21 +31,23 @@
 #whole-title{
     display: flex;
     flex-direction: row;
-    /* margin-right: 5%; */
+    /* margin-right: 20%; */
 }
 .left-side-contents{
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    width:60%
+    width:60%;
+    margin-right: 3%;
 }
 .left-side-loggedOut-contents{
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    width:80%
+    width:80%;
+    margin-right: 5%;
 }
 #site-title{
     font-size: 30px;
@@ -60,10 +62,11 @@
     flex-direction: row;
     align-items: center;
     width: 80%;
+    height:30px
     /* margin-left: 5%; */
 }
 .NavBar-Search-Input{
-    height:38px;
+    height:100%;
     width:150%;
 }
 #title-period{
@@ -72,9 +75,9 @@
     border-radius: 70%;
 }
 #search-icon-img{
-    height:46px;
+    height:130%;
     margin-top: .24%;
-    border-radius: 6%;
+    border-radius: 3%;
 }
 .right-side-contents{
     display: flex;
