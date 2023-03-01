@@ -57,7 +57,7 @@ button.Add.to.Balance{
     font-weight: bold;
     font-size: 17px;
 }
-#edit-balance-button:hover{
+button.Add.to.Balance:hover{
     background-color: #e4e5e7;
 }
 

@@ -54,6 +54,7 @@
     margin-top: 30px;
 }
 
+
 .reviewBlock{
     display: flex;
     flex-direction: row;
@@ -71,7 +72,12 @@
     overflow: scroll;
     align-self: center;
     padding-top: 2%;
-    /* margin-right: 5%; */
+}
+#no-review-line{
+    font: 400 16px/24px "Macan","Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 16px;
+    margin-top: 3%;
+    /* margin-left: 3%; */
 }
 #review-stars{
     width:43%;

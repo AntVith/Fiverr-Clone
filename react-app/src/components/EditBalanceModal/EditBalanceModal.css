@@ -23,7 +23,7 @@
 }
 #balance-form-errors{
     margin-bottom: 2%;
-    color: rgb(247, 92, 92);
+    color: black
 }
 .balance-form-inputs{
     display: flex;
