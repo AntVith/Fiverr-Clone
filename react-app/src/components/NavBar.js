@@ -43,7 +43,7 @@ const NavBar = () => {
         <div id='search-div'>
           <input
           type='text'
-          placeholder='What service are you looking for today?'
+          placeholder='  What service are you looking for today?'
           required
           onChange={(e) => setSearchInput(e.target.value)}
           value={searchInput}
